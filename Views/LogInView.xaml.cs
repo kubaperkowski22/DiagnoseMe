@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DiagnoseMe.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,24 @@ namespace DiagnoseMe.Views
     /// </summary>
     public partial class LogInView : UserControl
     {
+        public LogInVM LogInVM
+        {
+            get
+            {
+                return _loginVM;
+            }
+            set
+            {
+                _loginVM = value;
+            }
+        }
+        private LogInVM _loginVM;
         public LogInView()
         {
             InitializeComponent();
+
+            LogInVM = new LogInVM();
+            this.DataContext = LogInVM;
         }
 
         private void Register_Button_Click(object sender, RoutedEventArgs e)
@@ -32,7 +49,9 @@ namespace DiagnoseMe.Views
 
         private void LogIn_Button_Click(object sender, RoutedEventArgs e)
         {
+            var mainWindwVM = App.Current.Services.GetService<MainWindowVM>();
 
+            mainWindwVM.IsUserLoggedIn = true;
         }
 
         private void ForgotPassword_Button_Click(object sender, RoutedEventArgs e)

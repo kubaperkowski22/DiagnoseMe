@@ -1,0 +1,48 @@
+
+Pytania ogólne:
+1. Czy masz gorączkę? Jeśli tak, jak wysoka jest temperatura?
+2. Czy odczuwasz zmęczenie lub osłabienie?
+3. Czy odczuwasz bóle mięśni lub stawów?
+4. Czy masz dreszcze lub nocne poty?
+5. Czy doświadczasz zawrotów głowy?
+6. Czy straciłeś apetyt w ostatnich dniach?
+7. Czy schudłeś bez wyraźnego powodu?
+
+Pytania dotyczące układu oddechowego:
+1. Czy masz kaszel? Jeśli tak, jak długo trwa i czy jest suchy czy mokry?
+2. Czy masz katar? Jeśli tak, czy wydzielina jest przejrzysta, żółta czy zielona?
+3. Czy odczuwasz ból gardła? Jak bardzo jest nasilony?
+4. Czy masz duszności lub trudności z oddychaniem?
+5. Czy masz świszczący oddech lub uczucie ucisku w klatce piersiowej?
+
+Pytania dotyczące układu pokarmowego:
+1. Czy odczuwasz ból brzucha? Jeśli tak, gdzie dokładnie?
+2. Czy masz biegunkę? Jak często oddajesz stolec?
+3. Czy miałeś wymioty lub nudności?
+4. Czy odczuwasz zgagę lub pieczenie w przełyku?
+5. Czy masz wzdęcia lub problemy z trawieniem?
+
+Pytania dermatologiczne:
+1. Czy masz wysypkę lub zmiany na skórze? Jak wyglądają i gdzie się znajdują?
+2. Czy odczuwasz swędzenie skóry?
+3. Czy zauważyłeś zaczerwienienie lub opuchliznę na skórze?
+4. Czy masz rumień (czerwony, rozszerzający się krąg na skórze)?
+
+Pytania dotyczące układu moczowego:
+1. Czy odczuwasz ból lub pieczenie podczas oddawania moczu?
+2. Czy oddajesz mocz częściej niż zwykle?
+3. Czy zauważyłeś krew w moczu?
+4. Czy masz uczucie pełnego pęcherza po oddaniu moczu?
+
+Pytania dotyczące układu krążenia:
+1. Czy odczuwasz ból w klatce piersiowej? Jeśli tak, czy ból promieniuje do innych części ciała?
+2. Czy masz kołatanie serca lub nieregularne bicie serca?
+3. Czy zauważyłeś obrzęki nóg lub kostek?
+4. Czy doświadczyłeś zawrotów głowy lub omdleń?
+
+Pytania neurologiczne:
+1. Czy masz częste bóle głowy? Gdzie są zlokalizowane?
+2. Czy odczuwasz drżenie rąk lub innych części ciała?
+3. Czy masz problemy z mową, jak np. trudności w formułowaniu zdań?
+4. Czy odczuwasz osłabienie lub niedowład w kończynach?
+5. Czy zdarzyło ci się stracić przytomność lub doznać omdlenia?

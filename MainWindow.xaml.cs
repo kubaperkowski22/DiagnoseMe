@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using DiagnoseMe.Views;
 using DiagnoseMe.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DiagnoseMe
 {
@@ -35,7 +36,7 @@ namespace DiagnoseMe
         {
             InitializeComponent();
 
-            ViewModel = new MainWindowVM();
+            ViewModel = App.Current.Services.GetService<MainWindowVM>();
             this.DataContext = ViewModel;
         }
 
@@ -44,7 +45,7 @@ namespace DiagnoseMe
             var menuItem = e.ClickedItem as HamburgerMenuIconItem;
             if (menuItem is not null)
             {
-                if(menuItem.Tag.ToString() == "Diagnosis")
+                if (menuItem.Tag.ToString() == "Diagnosis")
                 {
                     HamburgerMenuControl.Content = new Views.DiagnoseView();
                     this.HamburgerMenuControl.IsPaneOpen = false;
@@ -63,12 +64,16 @@ namespace DiagnoseMe
                         HamburgerMenuControl.Content = new Views.FindDoctorsView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
-                    case "Appointments":
+                    case "Calendar":
                         HamburgerMenuControl.Content = new Views.AppointmentsView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "History":
                         HamburgerMenuControl.Content = new Views.HistoryView();
+                        this.HamburgerMenuControl.IsPaneOpen = false;
+                        break;
+                    case "Notifications":
+                        HamburgerMenuControl.Content = new Views.NotificationsView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     default:

@@ -32,12 +32,16 @@ namespace DiagnoseMe
             }
         }
         private MainWindowVM _viewModel;
+
+        private AppointmentsView _appointmentsView;
         public MainWindow()
         {
             InitializeComponent();
 
             ViewModel = App.Current.Services.GetService<MainWindowVM>();
             this.DataContext = ViewModel;
+
+            _appointmentsView = App.Current.Services.GetService<AppointmentsView>() as AppointmentsView;
         }
 
         private void HamburgerMenuControl_OnItemClick(object sender, ItemClickEventArgs e)
@@ -65,7 +69,7 @@ namespace DiagnoseMe
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "Calendar":
-                        HamburgerMenuControl.Content = new Views.AppointmentsView();
+                        HamburgerMenuControl.Content = _appointmentsView;
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "History":

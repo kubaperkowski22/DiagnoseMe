@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DiagnoseMe.ViewModels
 {
@@ -13,7 +14,13 @@ namespace DiagnoseMe.ViewModels
         public bool IsUserLoggedIn
         {
             get => _isUserLoggedIn;
-            set => _isUserLoggedIn = value;
+            set
+            {
+                //if (!_isUserLoggedIn && value)
+                //    App.Current.Services.GetService<MainWindow>().HamburgerMenuControl.Content = null;
+
+                _isUserLoggedIn = value;
+            }
         }
         private bool _isUserLoggedIn;
 

@@ -10,16 +10,9 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:vm="clr-namespace:DiagnoseMe.ViewModels"
         d:DataContext="{d:DesignInstance Type=vm:MainWindowVM}"
-        Background="{StaticResource ResourceKey=MainBackgroundColor}"
-        BorderBrush="#000000"
-        WindowTitleBrush="#333333"
-        NonActiveWindowTitleBrush="#333333"
-        TitleForeground="{StaticResource AccentColor}"
         WindowStartupLocation="CenterScreen"
-        ShowIconOnTitleBar="True"
-        GlowBrush="#333333"
         ResizeMode="CanMinimize"
-        TitleCharacterCasing="Normal"
+        Style="{StaticResource MetroWindowStyle}"
         Title="DiagnoseMe" Height="600" Width="1000">
 
     <Grid>

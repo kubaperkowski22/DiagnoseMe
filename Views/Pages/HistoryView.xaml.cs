@@ -24,5 +24,10 @@ namespace DiagnoseMe.Views
         {
             InitializeComponent();
         }
+
+        private void DeleteDiagnosisButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

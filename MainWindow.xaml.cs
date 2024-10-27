@@ -51,7 +51,7 @@ namespace DiagnoseMe
             {
                 if (menuItem.Tag.ToString() == "Diagnosis")
                 {
-                    HamburgerMenuControl.Content = new Views.DiagnoseView();
+                    HamburgerMenuControl.Content = new DiagnoseView();
                     this.HamburgerMenuControl.IsPaneOpen = false;
                     return;
                 }
@@ -65,7 +65,7 @@ namespace DiagnoseMe
                 switch (menuItem.Tag.ToString())
                 {
                     case "FindDoctor":
-                        HamburgerMenuControl.Content = new Views.FindDoctorsView();
+                        HamburgerMenuControl.Content = new FindDoctorsView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "Calendar":
@@ -73,11 +73,11 @@ namespace DiagnoseMe
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "History":
-                        HamburgerMenuControl.Content = new Views.HistoryView();
+                        HamburgerMenuControl.Content = new HistoryView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "Notifications":
-                        HamburgerMenuControl.Content = new Views.NotificationsView();
+                        HamburgerMenuControl.Content = new NotificationsView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     default:
@@ -94,11 +94,11 @@ namespace DiagnoseMe
                 switch (menuItem.Tag.ToString())
                 {
                     case "Account":
-                        HamburgerMenuControl.Content = new Views.AccountView();
+                        HamburgerMenuControl.Content = new AccountView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "Settings":
-                        HamburgerMenuControl.Content = new Views.SettingsView();
+                        HamburgerMenuControl.Content = new SettingsView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     default:
@@ -109,7 +109,7 @@ namespace DiagnoseMe
 
         private void RedirectToLogInView()
         {
-            HamburgerMenuControl.Content = new Views.LogInView();
+            HamburgerMenuControl.Content = new LogInView();
             this.HamburgerMenuControl.IsPaneOpen = false;
         }
 

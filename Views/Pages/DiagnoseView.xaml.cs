@@ -23,6 +23,25 @@ namespace DiagnoseMe.Views
         public DiagnoseView()
         {
             InitializeComponent();
+
+            PageTitle_TextBlock.Text = "Zdiagnozuj się";
+            PrimaryData_Grid.Visibility = Visibility.Collapsed;
+            BirthYear_PickerControl.Maximum = DateTime.UtcNow.Year;
+        }
+
+        private void StartDiagnosis_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PageTitle_TextBlock.Text = "Uzupełnij dane";
+            StartDiagnosis_Button.Visibility = Visibility.Collapsed;
+            PrimaryData_Grid.Visibility = Visibility.Visible;
+        }
+
+        private void NextPage_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            PageTitle_TextBlock.Text = "Wybierz objawy";
+            StartDiagnosis_Button.Visibility = Visibility.Collapsed;
+            PrimaryData_Grid.Visibility = Visibility.Collapsed;
+            Sypmthoms_Grid.Visibility = Visibility.Visible;
         }
     }
 }

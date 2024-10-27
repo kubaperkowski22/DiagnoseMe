@@ -4,13 +4,190 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DiagnoseMe.Views"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock FontSize="48"
-           Text="Diagnose page"
-           Foreground="HotPink"
-           VerticalAlignment="Center"
-           HorizontalAlignment="Center"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Zdiagnozuj się"
+                   Grid.Row="0"
+                   Name="PageTitle_TextBlock"
+                   Style="{StaticResource HeaderTextStyle}"
+                   HorizontalAlignment="Center"/>
+
+        <Button x:Name="StartDiagnosis_Button"
+                Style="{StaticResource RegularButton}"
+                Width="180"
+                Visibility="Visible"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                Margin="0 100 0 0"
+                FontSize="19"
+                Height="40"
+                Content="Rozpocznij"
+                Click="StartDiagnosis_Button_Click"/>
+
+        <Grid Grid.Row="1"
+              Visibility="Collapsed"
+              Name="PrimaryData_Grid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="Imię"
+                     Style="{StaticResource PrimaryTextStyle}"/>
+                <TextBox Width="400"/>
+            </StackPanel>
+
+            <WrapPanel Grid.Row="1"
+                       Width="400"
+                       HorizontalAlignment="Center">
+
+                <StackPanel Margin="0 0 32 0">
+                    <TextBlock Text="Rok urodzenia"
+                               Style="{StaticResource PrimaryTextStyle}"/>
+                    <mah:NumericUpDown Width="111"
+                                       Name="BirthYear_PickerControl"
+                                       Value="1999"
+                                       Minimum="1900"/>
+
+                </StackPanel>
+
+                <StackPanel Margin="0 0 32 0">
+                    <TextBlock Text="Wzrost (cm)"
+                               Style="{StaticResource PrimaryTextStyle}"/>
+                    <mah:NumericUpDown Width="111"
+                                       Minimum="120"
+                                       Maximum="220"
+                                       Value="165"/>
+
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Waga (kg)"
+                               Style="{StaticResource PrimaryTextStyle}"/>
+                    <mah:NumericUpDown Width="111"
+                                       Minimum="35"
+                                       Maximum="250"
+                                       Value="60"/>
+
+                </StackPanel>
+
+            </WrapPanel>
+
+
+            <StackPanel Grid.Row="2"
+                  HorizontalAlignment="Center">
+                <TextBlock Text="Płeć"
+                     Width="400"
+                     Style="{StaticResource PrimaryTextStyle}"/>
+
+                <WrapPanel HorizontalAlignment="Center"
+                     Margin="10">
+                    <RadioButton Content="Mężczyzna" IsChecked="True" Margin="0 0 80 0"/>
+                    <RadioButton Content="Kobieta" IsChecked="False"/>
+                </WrapPanel>
+
+            </StackPanel>
+
+            <WrapPanel Grid.Row="3"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom">
+
+                <Button Style="{StaticResource RegularButton}"
+                        Width="130"
+                        Height="30"
+                        FontSize="15"
+                        Margin="270 0 0 30"
+                        Click="NextPage_ButtonClick"
+                        Content="Dalej"/>
+            </WrapPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Visibility="Collapsed"
+              Name="Sypmthoms_Grid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel Grid.Row="0"
+                       HorizontalAlignment="Center">
+                <ToggleButton Width="200"
+              Height="50"
+              Content="Gorączka"
+              FontSize="15"/>
+                <ToggleButton Width="200"
+              Height="50"
+              Content="Kaszel"
+              FontSize="15"/>
+                <ToggleButton Width="200"
+              Height="50"
+              Content="Ból gardła"
+              FontSize="15"/>
+                <ToggleButton Width="200"
+              Height="50"
+              Content="ból głowy"
+              FontSize="15"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Row="1"
+                       HorizontalAlignment="Center">
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Katar"
+                        FontSize="15"/>
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Ból brzucha"
+                        FontSize="15"/>
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Biegunka"
+                        FontSize="15"/>
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Bóle stawów"
+                        FontSize="15"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Row="2"
+                       HorizontalAlignment="Center">
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Zawroty głowy"
+                        FontSize="15"/>
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Mdłości"
+                        FontSize="15"/>
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Wysypka"
+                        FontSize="15"/>
+                <ToggleButton Width="200"
+                        Height="50"
+                        Content="Zaczerwieniona skóra"
+                        FontSize="15"/>
+            </WrapPanel>
+
+        </Grid>
+
     </Grid>
+
 </UserControl>

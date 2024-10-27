@@ -59,7 +59,8 @@ namespace DiagnoseMe.Views
         {
             var eventToDelete = Appointments_DataGrid.SelectedItem as Appointment;
 
-            ViewModel.Appointments.Remove(eventToDelete);
+            if(eventToDelete != null)
+                ViewModel.Appointments.Remove(eventToDelete);
         }
     }
 }

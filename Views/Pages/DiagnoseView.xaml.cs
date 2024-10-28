@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiagnoseMe.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,26 @@ namespace DiagnoseMe.Views
     /// </summary>
     public partial class DiagnoseView : UserControl
     {
+        public DiagnoseVM ViewModel
+        {
+            get
+            {
+                return _viewModel;
+            }
+            set
+            {
+                _viewModel = value;
+            }
+        }
+        private DiagnoseVM _viewModel;
+
         public DiagnoseView()
         {
             InitializeComponent();
 
-            PageTitle_TextBlock.Text = "Zdiagnozuj się";
-            PrimaryData_Grid.Visibility = Visibility.Collapsed;
+            ViewModel = new DiagnoseVM();
+            this.DataContext = ViewModel;
+
             BirthYear_PickerControl.Maximum = DateTime.UtcNow.Year;
         }
 

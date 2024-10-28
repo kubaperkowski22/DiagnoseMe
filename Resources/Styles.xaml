@@ -8,6 +8,7 @@
     <SolidColorBrush x:Key="MainBackgroundColor">#FCFAF9</SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryColor">#333333</SolidColorBrush>
     <SolidColorBrush x:Key="AccentColor">#48E5C2</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentColorDarker">#3BB09E</SolidColorBrush>
     <SolidColorBrush x:Key="DangerColor">#f74f55</SolidColorBrush>
     <SolidColorBrush x:Key="SecondaryBackgroundColor">#F3D3BD</SolidColorBrush>
     <SolidColorBrush x:Key="BorderColor">#5E5E5E</SolidColorBrush>
@@ -37,7 +38,7 @@
         <Setter Property="Padding" Value="10,5"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#A3D5FF"/>
+                <Setter Property="Background" Value="{StaticResource SecondaryBackgroundColor}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6"/>
@@ -69,6 +70,44 @@
                 <Setter Property="Background" Value="#ff787c"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <!-- Toggle button style -->
+    <Style TargetType="ToggleButton" x:Key="CustomToggleButtonStyle">
+        <Setter Property="Background" Value="{StaticResource AccentColor}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#F3D3BD" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource AccentColorDarker}" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource AccentColorDarker}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- Body text style -->

@@ -7,10 +7,76 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock FontSize="48"
-           Text="Account page"
-           Foreground="HotPink"
-           VerticalAlignment="Center"
-           HorizontalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Twoje konto"
+                   Grid.Row="0"
+                   Style="{StaticResource HeaderTextStyle}"
+                   HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Imię"
+                       Style="{StaticResource PrimaryTextStyle}"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="Jan" Width="400"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+            HorizontalAlignment="Center">
+            <TextBlock Text="Nazwisko"
+               Style="{StaticResource PrimaryTextStyle}"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="Kowalski" Width="400"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Płeć"
+                       Width="400"
+                       Style="{StaticResource PrimaryTextStyle}"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="Mężczyzna" Width="400"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="4"
+            HorizontalAlignment="Center">
+            <TextBlock Text="Email"
+               Style="{StaticResource PrimaryTextStyle}"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="jankowalski123@gmail.com" Width="400" FontSize="14"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="5"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Powtórz hasło"
+                       Style="{StaticResource PrimaryTextStyle}"/>
+            <TextBlock Width="400"
+                         Style="{StaticResource PrimaryTextStyle}" Text="⚫⚫⚫⚫⚫⚫⚫⚫"/>
+        </StackPanel>
+
+
+        <WrapPanel Grid.Row="6"
+           HorizontalAlignment="Center">
+            <Button Style="{StaticResource RegularButton}"
+            Width="190"
+            Height="30"
+            Margin="0 0 15 0"
+            Content="Edytuj dane"/>
+            <Button Style="{StaticResource DangerButton}"
+            Width="190"
+            Height="30"
+            Content="Usuń konto"/>
+        </WrapPanel>
     </Grid>
+
 </UserControl>

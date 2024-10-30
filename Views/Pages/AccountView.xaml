@@ -58,7 +58,7 @@
 
         <StackPanel Grid.Row="5"
                     HorizontalAlignment="Center">
-            <TextBlock Text="Powtórz hasło"
+            <TextBlock Text="Hasło"
                        Style="{StaticResource PrimaryTextStyle}"/>
             <TextBlock Width="400"
                          Style="{StaticResource PrimaryTextStyle}" Text="⚫⚫⚫⚫⚫⚫⚫⚫"/>

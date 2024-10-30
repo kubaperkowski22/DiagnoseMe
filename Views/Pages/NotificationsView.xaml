@@ -4,13 +4,70 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DiagnoseMe.Views"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock FontSize="48"
-                   Text="Notifications page"
-                   Foreground="HotPink"
-                   VerticalAlignment="Center"
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Powiadomienia"
+                   Grid.Row="0"
+                   Style="{StaticResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
+
+
+        <Button Name="DeleteDiagnosisButton"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource DangerButton}"
+                    Width="130"
+                    Height="30"
+                    Margin="570 0 0 0"
+                    FontSize="15">
+            <Button.Content>
+                <WrapPanel>
+                    <fa:FontAwesome Icon="Trash" Foreground="{StaticResource TextPrimaryColor}" Margin="0 0 7 0" FontSize="18" VerticalAlignment="Center"/>
+                    <TextBlock Text="Usuń" Foreground="{StaticResource TextPrimaryColor}"/>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
+
+        <Border Grid.Row="2"
+                BorderThickness="0.7"
+                BorderBrush="Black"
+                Width="700"
+                HorizontalAlignment="Center">
+
+            <DataGrid Width="700"
+                      Name="Diagnosis_DataGrid"
+                      RowStyle="{DynamicResource DataGridRowStyle1}"
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                      CellStyle="{DynamicResource DataGridCellStyle1}"
+                      Style="{DynamicResource DataGridStyle1}"
+                      CanUserAddRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserResizeColumns="True"
+                      CanUserDeleteRows="False"
+                      
+                      CanUserResizeRows="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Diagnoza"
+                                        Width="160"/>
+                    <DataGridTextColumn Header="Data"
+                                        Width="210"/>
+                    <DataGridTextColumn Header="Zalecenia"
+                                        Width="300"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+
     </Grid>
+
 </UserControl>

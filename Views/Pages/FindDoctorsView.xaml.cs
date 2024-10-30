@@ -23,7 +23,9 @@ namespace DiagnoseMe.Views
         public FindDoctorsView()
         {
             InitializeComponent();
-            MyWebBrowser.Navigate("https://gsl.nfz.gov.pl/GSL/GSL/PrzychodnieSpecjalistyczne");
+
+            //MyWebBrowser.Navigate("https://gsl.nfz.gov.pl/GSL/GSL/PrzychodnieSpecjalistyczne");
+
             MyWebBrowser2.Navigate("https://gsl.nfz.gov.pl/GSL/GSL/PrzychodnieSpecjalistyczne");
         }
     }

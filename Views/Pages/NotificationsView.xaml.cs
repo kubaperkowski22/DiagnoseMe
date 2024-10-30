@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DiagnoseMe.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,24 @@ namespace DiagnoseMe.Views
     /// </summary>
     public partial class NotificationsView : UserControl
     {
+        public NotificationsVM ViewModel
+        {
+            get
+            {
+                return _notificationsVM;
+            }
+            set
+            {
+                _notificationsVM = value;
+            }
+        }
+        private NotificationsVM _notificationsVM;
         public NotificationsView()
         {
             InitializeComponent();
+
+            ViewModel = new NotificationsVM();
+            this.DataContext = ViewModel;
         }
     }
 }

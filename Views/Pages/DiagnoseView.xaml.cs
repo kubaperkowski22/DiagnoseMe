@@ -49,6 +49,8 @@ namespace DiagnoseMe.Views
             PageTitle_TextBlock.Text = "Uzupełnij dane";
             StartDiagnosis_Button.Visibility = Visibility.Collapsed;
             PrimaryData_Grid.Visibility = Visibility.Visible;
+
+            ViewModel.StartDiagnosis();
         }
 
         private void NextPage_ButtonClick(object sender, RoutedEventArgs e)
@@ -57,6 +59,14 @@ namespace DiagnoseMe.Views
             StartDiagnosis_Button.Visibility = Visibility.Collapsed;
             PrimaryData_Grid.Visibility = Visibility.Collapsed;
             Sypmthoms_Grid.Visibility = Visibility.Visible;
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageTitle_TextBlock.Text = "Uzupełnij dane";
+            StartDiagnosis_Button.Visibility = Visibility.Collapsed;
+            PrimaryData_Grid.Visibility = Visibility.Visible;
+            Sypmthoms_Grid.Visibility = Visibility.Collapsed;
         }
     }
 }

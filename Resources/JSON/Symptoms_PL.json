@@ -1,0 +1,40 @@
+{
+    "@fever": "Gorączka",
+    "@fatigue": "Zmęczenie",
+    "@musclePain": "Bóle mięśniowe",
+    "@chills": "Dreszcze",
+    "@nightSweats": "Nocne poty",
+    "@dizziness": "Zawroty głowy",
+    "@lossOfAppetite": "Brak apetytu",
+    
+    "@cough": "Kaszel",
+    "@runnyNose": "Katar",
+    "@soreThroat": "Ból gardła",
+    "@shortnessOfBreath": "Duszność",
+    "@wheezing": "Świszczący oddech",
+    
+    "@abdominalPain": "Ból brzucha",
+    "@diarrhea": "Biegunka",
+    "@vomiting": "Wymioty",
+    "@heartburn": "Zgaga",
+    "@bloating": "Wzdęcia",
+    
+    "@rash": "Wysypka",
+    "@itching": "Swędzenie skóry",
+    "@skinChanges": "Zmiany na skórze",
+    "@erythema": "Rumień",
+    
+    "@painOnUrination": "Ból przy oddawaniu moczu",
+    "@frequentUrination": "Częstomocz",
+    "@bloodInUrine": "Krew w moczu",
+    
+    "@chestPain": "Ból w klatce piersiowej",
+    "@palpitations": "Kołatanie serca",
+    "@legSwelling": "Obrzęki nóg",
+    
+    "@headache": "Bóle głowy",
+    "@tremor": "Drżenie",
+    "@speechDisturbance": "Zaburzenia mowy",
+    "@limbWeakness": "Niedowład kończyn",
+    "@lossOfConsciousness": "Utrata przytomności"
+}

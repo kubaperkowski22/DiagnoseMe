@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DiagnoseMe.Helpers;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -10,71 +13,27 @@ namespace DiagnoseMe.ViewModels
 {
     public class DiagnoseVM : INotifyPropertyChanged
     {
-        public Dictionary<string, string> SymptomsDictionary
+        public ObservableCollection<string> SelectedSymptoms
         {
-            get => _symptomsDictionary;
+            get => _selectedSymptoms;
             set
             {
-                _symptomsDictionary = value;
+                _selectedSymptoms = value;
                 OnPropertyChanged();
             }
         }
-        private Dictionary<string, string> _symptomsDictionary;
+        private ObservableCollection<string> _selectedSymptoms;
+
+        public Diagnosis Diagnosis { get; set; }
 
         public DiagnoseVM()
         {
-            SetDictionary();
+            Diagnosis = App.Current.Services.GetService<Diagnosis>();
         }
-        private void SetDictionary()
+
+        public void StartDiagnosis()
         {
-            SymptomsDictionary = new Dictionary<string, string>
-            {
-            // Objawy ogólne
-            { "fever", "Gorączka" },
-            { "fatigue", "Zmęczenie" },
-            { "musclePain", "Bóle mięśniowe" },
-            { "chills", "Dreszcze" },
-            { "nightSweats", "Nocne poty" },
-            { "dizziness", "Zawroty głowy" },
-            { "lossOfAppetite", "Brak apetytu" },
 
-            // Objawy układu oddechowego
-            { "cough", "Kaszel" },
-            { "runnyNose", "Katar" },
-            { "soreThroat", "Ból gardła" },
-            { "shortnessOfBreath", "Duszność" },
-            { "wheezing", "Świszczący oddech" },
-
-            // Objawy układu pokarmowego
-            { "abdominalPain", "Ból brzucha" },
-            { "diarrhea", "Biegunka" },
-            { "vomiting", "Wymioty" },
-            { "heartburn", "Zgaga" },
-            { "bloating", "Wzdęcia" },
-
-            // Objawy dermatologiczne
-            { "rash", "Wysypka" },
-            { "itching", "Swędzenie skóry" },
-            { "skinChanges", "Zmiany na skórze" },
-            { "erythema", "Rumień" },
-
-            // Objawy układu moczowego
-            { "painOnUrination", "Ból przy oddawaniu moczu" },
-            { "frequentUrination", "Częstomocz" },
-            { "bloodInUrine", "Krew w moczu" },
-
-            // Objawy układu krążenia
-            { "chestPain", "Ból w klatce piersiowej" },
-            { "palpitations", "Kołatanie serca" },
-            { "legSwelling", "Obrzęki nóg" },
-
-            // Objawy neurologiczne
-            { "headache", "Bóle głowy" },
-            { "tremor", "Drżenie" },
-            { "speechDisturbance", "Zaburzenia mowy" },
-            { "limbWeakness", "Niedowład kończyn" },
-            { "lossOfConsciousness", "Utrata przytomności" }
-            };
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

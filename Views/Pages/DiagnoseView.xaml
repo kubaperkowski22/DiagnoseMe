@@ -140,7 +140,7 @@
                 <ScrollViewer VerticalScrollBarVisibility="Visible"
                           Margin="10">
 
-                    <ItemsControl ItemsSource="{Binding SymptomsDictionary}">
+                    <ItemsControl ItemsSource="{Binding Diagnosis.SymptomsDictionary}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel HorizontalAlignment="Center"/>
@@ -171,6 +171,7 @@
                         Height="30"
                         FontSize="15"
                         Margin="15 0 190 0"
+                        Click="GoBackButton_Click"
                         Content="Wróć"/>
 
                 <Button Style="{StaticResource RegularButton}"

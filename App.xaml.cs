@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using DiagnoseMe.ViewModels;
 using DiagnoseMe.Views;
+using DiagnoseMe.Helpers;
 
 namespace DiagnoseMe
 {
@@ -34,6 +35,9 @@ namespace DiagnoseMe
             //ViewModels
             services.AddSingleton<MainWindowVM>();
             services.AddSingleton<AppointmentsVM>();
+
+            //Helpers
+            services.AddSingleton<Diagnosis>();
 
             return services.BuildServiceProvider();
         }

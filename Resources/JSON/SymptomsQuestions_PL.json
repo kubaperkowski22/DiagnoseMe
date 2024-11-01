@@ -1,0 +1,188 @@
+{
+  "@fever": [
+    "Jak wysoka jest temperatura?",
+    "Od ilu dni pacjent ma gorączkę?",
+    "Czy gorączce towarzyszą dreszcze, poty lub osłabienie?"
+  ],
+
+  "@fatigue": [
+    "Jak długo utrzymuje się zmęczenie?",
+    "Czy zmęczenie nasila się w określonych porach dnia lub po wysiłku?",
+    "Czy zmęczenie jest na tyle intensywne, że uniemożliwia codzienne czynności?"
+  ],
+
+  "@musclePain": [
+    "W jakich partiach ciała występuje ból?",
+    "Czy ból jest stały czy okresowy?",
+    "Czy bóle mięśniowe pojawiły się po intensywnym wysiłku lub przebyciu infekcji?"
+  ],
+
+  "@chills": [
+    "Czy dreszcze występują razem z gorączką?",
+    "Czy pojawiają się w określonych porach dnia lub po zmianie temperatury otoczenia?",
+    "Czy dreszcze ustępują po wypiciu ciepłych napojów lub ogrzaniu się?"
+  ],
+
+  "@nightSweats": [
+    "Jak długo pacjent doświadcza nocnych potów?",
+    "Czy towarzyszy im gorączka lub ból?",
+    "Czy pacjent budzi się z przemoczoną pościelą?"
+  ],
+
+  "@dizziness": [
+    "Czy zawroty głowy pojawiają się w określonych sytuacjach (np. po wstaniu z łóżka)?",
+    "Jak długo trwają epizody zawrotów głowy?",
+    "Czy zawroty głowy towarzyszą innym objawom, np. omdleniom, nudnościom?"
+  ],
+
+  "@lossOfAppetite": [
+    "Od kiedy pacjent zauważył brak apetytu?",
+    "Czy pacjent stracił na wadze?",
+    "Czy brak apetytu towarzyszy nudnościom lub bólowi brzucha?"
+  ],
+
+  "@cough": [
+    "Czy kaszel jest suchy, czy mokry (produktywny)?",
+    "Od ilu dni występuje kaszel?",
+    "Czy kaszlowi towarzyszy ból w klatce piersiowej lub uczucie duszności?",
+    "Czy pacjent jest na coś uczulony?"
+  ],
+
+  "@runnyNose": [
+    "Jaka jest konsystencja i kolor wydzieliny (przejrzysta, żółta, zielona)?",
+    "Czy katarowi towarzyszy ból zatok lub ból głowy?",
+    "Czy pacjent ma alergie sezonowe lub kontakt z alergenami?"
+  ],
+
+  "@soreThroat": [
+    "Czy ból gardła nasila się przy przełykaniu?",
+    "Czy ból jest ostry, piekący, czy bardziej tępy?",
+    "Od ilu dni pacjent odczuwa ból gardła?"
+  ],
+
+  "@shortnessOfBreath": [
+    "W jakich sytuacjach pojawia się duszność (podczas wysiłku, w spoczynku)?",
+    "Czy duszność nasila się w nocy lub w określonych pozycjach?",
+    "Czy pacjent cierpi na astmę lub inne choroby układu oddechowego?"
+  ],
+
+  "@wheezing": [
+    "Czy pacjent wcześniej miał problemy z astmą?",
+    "Czy świszczący oddech nasila się po kontakcie z alergenami lub wysiłku fizycznym?",
+    "Czy pacjent ma uczucie ucisku w klatce piersiowej?"
+  ],
+
+  "@abdominalPain": [
+    "Gdzie dokładnie odczuwany jest ból brzucha?",
+    "Czy ból pojawia się po jedzeniu, rano, czy o określonej porze dnia?",
+    "Czy ból jest ostry, kłujący, piekący czy bardziej tępy?"
+  ],
+
+  "@diarrhea": [
+    "Ile razy dziennie występują wypróżnienia?",
+    "Od ilu dni występuje biegunka?",
+    "Co pacjent ostatnio jadł (np. wczoraj, dzisiaj)?"
+  ],
+
+  "@vomiting": [
+    "Ile razy pacjent wymiotował w ciągu ostatniej doby?",
+    "Czy wymiotom towarzyszą inne objawy, jak ból brzucha, gorączka?",
+    "Czy wymioty są związane z konkretnymi posiłkami lub porą dnia?"
+  ],
+
+  "@heartburn": [
+    "Czy pacjent odczuwa zgagę po posiłkach?",
+    "Czy zgaga nasila się w określonych pozycjach (np. leżeniu)?",
+    "Czy pacjent stosuje leki na refluks lub kwaśność żołądka?"
+  ],
+
+  "@bloating": [
+    "Jak długo pacjent doświadcza wzdęć?",
+    "Czy wzdęcia występują po spożyciu określonych pokarmów?",
+    "Czy pacjent odczuwa przy tym ból brzucha?"
+  ],
+
+  "@rash": [
+    "Jak wygląda wysypka (plamy, grudki, pęcherze)?",
+    "Gdzie jest zlokalizowana i jak długo występuje?",
+    "Czy wysypce towarzyszy swędzenie lub pieczenie?"
+  ],
+
+  "@itching": [
+    "Czy swędzenie jest ograniczone do konkretnego miejsca czy obejmuje całe ciało?",
+    "Czy swędzenie nasila się w określonych sytuacjach (np. po kąpieli)?",
+    "Czy pacjent stosuje nowe kosmetyki, detergenty lub leki?"
+  ],
+
+  "@skinChanges": [
+    "Jak wyglądają zmiany (plamy, krosty, rany)?",
+    "Czy zmiany są bolesne, swędzące lub łuszczące się?",
+    "Czy zmiany pojawiły się nagle, czy narastały stopniowo?"
+  ],
+
+  "@erythema": [
+    "Czy rumień ma charakterystyczny krąg (jak przy boreliozie)?",
+    "Czy rumień jest gorący lub bolesny?",
+    "Czy pacjent był ostatnio narażony na ukąszenia owadów?"
+  ],
+
+  "@painfulUrination": [
+    "Od jak dawna pacjent odczuwa ból podczas oddawania moczu?",
+    "Czy ból występuje na początku, w trakcie, czy po oddawaniu moczu?",
+    "Czy pacjent zaobserwował zmiany w kolorze moczu?"
+  ],
+
+  "@frequentUrination": [
+    "Jak często pacjent odczuwa potrzebę oddania moczu?",
+    "Czy częstomocz występuje również w nocy?",
+    "Czy pacjent odczuwa ból lub pieczenie podczas oddawania moczu?"
+  ],
+
+  "@bloodInUrine": [
+    "Czy krew jest widoczna gołym okiem, czy tylko w badaniach?",
+    "Czy pacjent zaobserwował inne objawy, jak ból brzucha, gorączkę?",
+    "Czy pacjent miał wcześniej problemy z nerkami lub infekcje dróg moczowych?"
+  ],
+
+  "@chestPain": [
+    "Czy ból jest kłujący, piekący, czy uciskowy?",
+    "Czy ból promieniuje do innych części ciała (ręki, szyi)?",
+    "Czy ból pojawia się podczas wysiłku fizycznego, stresu, w spoczynku?"
+  ],
+
+  "@heartPalpitations": [
+    "Jak często pacjent doświadcza kołatania serca?",
+    "Czy kołatanie pojawia się w sytuacjach stresowych lub po wysiłku?",
+    "Czy pacjent odczuwa przy tym zawroty głowy lub duszność?"
+  ],
+
+  "@legSwelling": [
+    "Czy obrzęki występują głównie wieczorem, po długim staniu, czy bez związku z porą dnia?",
+    "Czy obrzęk jest bolesny i jednostronny czy występuje w obu nogach?",
+    "Czy pacjent miał wcześniej problemy z krążeniem lub sercem?"
+  ],
+
+  "@headache": [
+    "Jak długo trwa ból i czy jest jednostronny, czy obejmuje całą głowę?",
+    "Czy ból głowy nasila się przy hałasie, świetle?",
+    "Czy ból głowy pojawia się rano, wieczorem lub w ciągu dnia?"
+  ],
+
+  "@tremors": [
+    "W których częściach ciała występuje drżenie?",
+    "Czy drżenie występuje głównie w spoczynku czy przy wykonywaniu ruchów?",
+    "Czy pacjent zauważył nasilenie drżenia w stresujących sytuacjach?"
+  ],
+
+  "@speechDisorders": [
+    "Czy pacjent ma problemy z artykulacją czy formułowaniem myśli?",
+    "Czy problemy z mową pojawiły się nagle?",
+    "Czy towarzyszą im inne objawy neurologiczne, jak osłabienie kończyn?"
+  ],
+
+  "@limbWeakness": [
+    "Czy osłabienie dotyczy jednej strony ciała czy obu?",
+    "Czy pacjent ma trudności w poruszaniu się lub wykonywaniu precyzyjnych ruchów?",
+    "Czy osłabienie narasta stopniowo czy pojawiło się nagle?"
+  ]
+}

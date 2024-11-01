@@ -10,7 +10,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\Images\**" />
+    <EmbeddedResource Remove="Resources\Images\**" />
+    <None Remove="Resources\Images\**" />
+    <Page Remove="Resources\Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\JSON\SymptomsQuestions_PL.json" />
+    <None Remove="Resources\JSON\Symptoms_PL.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="DiagnoseMeIcon.ico" />
+    <Content Include="Resources\JSON\Symptoms_PL.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\JSON\SymptomsQuestions_PL.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Images\" />
     <Folder Include="Views\Controls\" />
   </ItemGroup>
 

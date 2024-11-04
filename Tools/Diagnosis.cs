@@ -79,5 +79,11 @@ namespace DiagnoseMe.Tools
             }
         }
 
+        public List<string>? GetQuestions(string key)
+        {
+            List<string>? questions = SymptomsQuestions[key];
+
+            return questions;
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace DiagnoseMe.ViewModels
     public class DiagnoseVM : INotifyPropertyChanged
     {
         public ObservableCollection<SymptomState> SymptomsButtonsStates { get; set; }
-
+        public ObservableCollection<SymptomQuestion> SymptomsQuestions { get; set; }
         public Diagnosis Diagnosis { get; set; }
 
         public DiagnoseVM()
@@ -22,16 +22,32 @@ namespace DiagnoseMe.ViewModels
             Diagnosis = App.Current.Services.GetService<Diagnosis>();
 
             SymptomsButtonsStates = new ObservableCollection<SymptomState>(Diagnosis.SymptomsDictionary.Select(x => new SymptomState { Key = x.Key, Value = false }));
+            SymptomsQuestions = new ObservableCollection<SymptomQuestion>();
         }
 
-        public IEnumerable<string> GetSelectedKeys()
+        public void UpdateQuestionList()
         {
-            return SymptomsButtonsStates.Where(pair => pair.Value).Select(pair => pair.Key);
+            SymptomsQuestions.Clear();
+            var selectedSymptoms = GetSelectedSymptoms();
+
+            foreach(var symptom in selectedSymptoms)
+            {
+                foreach (var question in Diagnosis.GetQuestions(symptom.Key))
+                {
+                    SymptomsQuestions.Add(new SymptomQuestion(symptom.Key, question));
+                }
+            }
         }
 
-        public void StartDiagnosis()
+        public List<SymptomState> GetSelectedSymptoms()
         {
-
+            var selectedSymptoms = new List<SymptomState>();
+            foreach(var item in SymptomsButtonsStates)
+            {
+                if (item.Value)
+                    selectedSymptoms.Add(item);
+            }
+            return selectedSymptoms;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

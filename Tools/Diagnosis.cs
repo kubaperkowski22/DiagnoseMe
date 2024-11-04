@@ -8,11 +8,11 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace DiagnoseMe.Helpers
+namespace DiagnoseMe.Tools
 {
     public class Diagnosis
     {
-        public Dictionary<string, string> SymptomsDictionary {  get; set; }
+        public Dictionary<string, string> SymptomsDictionary { get; set; }
         public Dictionary<string, List<string>> SymptomsQuestions { get; set; }
 
         public Diagnosis()
@@ -35,7 +35,7 @@ namespace DiagnoseMe.Helpers
                 {
                     string jsonContent = File.ReadAllText(symptomsFilePath);
 
-                    SymptomsDictionary = JsonSerializer.Deserialize<Dictionary<string,string>>(jsonContent);
+                    SymptomsDictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonContent);
                 }
                 catch (Exception ex)
                 {

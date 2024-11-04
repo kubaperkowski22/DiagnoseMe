@@ -1,4 +1,4 @@
-﻿using DiagnoseMe.Helpers;
+﻿using DiagnoseMe.Tools;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,22 +13,20 @@ namespace DiagnoseMe.ViewModels
 {
     public class DiagnoseVM : INotifyPropertyChanged
     {
-        public ObservableCollection<string> SelectedSymptoms
-        {
-            get => _selectedSymptoms;
-            set
-            {
-                _selectedSymptoms = value;
-                OnPropertyChanged();
-            }
-        }
-        private ObservableCollection<string> _selectedSymptoms;
+        public ObservableCollection<SymptomState> SymptomsButtonsStates { get; set; }
 
         public Diagnosis Diagnosis { get; set; }
 
         public DiagnoseVM()
         {
             Diagnosis = App.Current.Services.GetService<Diagnosis>();
+
+            SymptomsButtonsStates = new ObservableCollection<SymptomState>(Diagnosis.SymptomsDictionary.Select(x => new SymptomState { Key = x.Key, Value = false }));
+        }
+
+        public IEnumerable<string> GetSelectedKeys()
+        {
+            return SymptomsButtonsStates.Where(pair => pair.Value).Select(pair => pair.Key);
         }
 
         public void StartDiagnosis()

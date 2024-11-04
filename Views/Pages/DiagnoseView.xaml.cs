@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -67,6 +68,19 @@ namespace DiagnoseMe.Views
             StartDiagnosis_Button.Visibility = Visibility.Collapsed;
             PrimaryData_Grid.Visibility = Visibility.Visible;
             Sypmthoms_Grid.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string hejka = string.Empty;
+
+            foreach(var item in ViewModel.SymptomsButtonsStates)
+            {
+                if (item.Value == true)
+                    hejka += item.Key + '\n';
+            }
+
+            MessageBox.Show(hejka, "zaznaczone objawy");
         }
     }
 }

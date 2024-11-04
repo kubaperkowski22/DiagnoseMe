@@ -186,10 +186,48 @@
                         Height="30"
                         FontSize="15"
                         Margin="190 0 15 0"
-                        Click="Button_Click"
+                        Click="NextPage_ButtonClick"
                         Content="Dalej"/>
             </WrapPanel>
 
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Visibility="Collapsed"
+              Name="AdditionalQuestions_Grid"
+              Width="auto">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="350"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Dodatkowe pytania"
+                       HorizontalAlignment="Center"
+                       FontSize="65"
+                       Foreground="HotPink"/>
+
+            <WrapPanel Grid.Row="1"
+               Margin="0 30 0 0"
+               HorizontalAlignment="Center">
+
+                <Button Style="{StaticResource RegularButton}"
+                Width="130"
+                Height="30"
+                FontSize="15"
+                Margin="15 0 190 0"
+                Click="GoBackButton_Click"
+                Content="Wróć"/>
+
+                <Button Style="{StaticResource RegularButton}"
+                Width="130"
+                Height="30"
+                FontSize="15"
+                Margin="190 0 15 0"
+                Click="Button_Click"
+                Content="Wynik"/>
+            </WrapPanel>
 
         </Grid>
 

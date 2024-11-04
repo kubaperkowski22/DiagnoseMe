@@ -35,6 +35,15 @@ namespace DiagnoseMe.Views
         }
         private DiagnoseVM _viewModel;
 
+        private EPageState _pageState;
+        private enum EPageState
+        {
+            PrimaryData = 1,
+            SymptomsSelection = 2,
+            AdditionalQuestions = 3,
+            Result = 4
+        }
+
         public DiagnoseView()
         {
             InitializeComponent();
@@ -42,6 +51,7 @@ namespace DiagnoseMe.Views
             ViewModel = new DiagnoseVM();
             this.DataContext = ViewModel;
 
+            _pageState = EPageState.PrimaryData;
             BirthYear_PickerControl.Maximum = DateTime.UtcNow.Year;
         }
 
@@ -50,24 +60,58 @@ namespace DiagnoseMe.Views
             PageTitle_TextBlock.Text = "Uzupełnij dane";
             StartDiagnosis_Button.Visibility = Visibility.Collapsed;
             PrimaryData_Grid.Visibility = Visibility.Visible;
-
-            ViewModel.StartDiagnosis();
         }
 
         private void NextPage_ButtonClick(object sender, RoutedEventArgs e)
         {
-            PageTitle_TextBlock.Text = "Wybierz objawy";
-            StartDiagnosis_Button.Visibility = Visibility.Collapsed;
-            PrimaryData_Grid.Visibility = Visibility.Collapsed;
-            Sypmthoms_Grid.Visibility = Visibility.Visible;
+            _pageState += 1;
+            SetView();
         }
 
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
-            PageTitle_TextBlock.Text = "Uzupełnij dane";
-            StartDiagnosis_Button.Visibility = Visibility.Collapsed;
-            PrimaryData_Grid.Visibility = Visibility.Visible;
-            Sypmthoms_Grid.Visibility = Visibility.Collapsed;
+            _pageState -= 1;
+            SetView();
+        }
+
+        private void SetView()
+        {
+            if(_pageState == EPageState.AdditionalQuestions)
+                ViewModel.UpdateQuestionList();
+
+            switch (_pageState)
+            {
+                case EPageState.PrimaryData:
+                    PageTitle_TextBlock.Text = "Uzupełnij dane";
+                    StartDiagnosis_Button.Visibility = Visibility.Collapsed;
+                    PrimaryData_Grid.Visibility = Visibility.Visible;
+                    Sypmthoms_Grid.Visibility = Visibility.Collapsed;
+                    AdditionalQuestions_Grid.Visibility = Visibility.Collapsed;
+                    return;
+                case EPageState.SymptomsSelection:
+                    PageTitle_TextBlock.Text = "Wybierz objawy";
+                    StartDiagnosis_Button.Visibility = Visibility.Collapsed;
+                    PrimaryData_Grid.Visibility = Visibility.Collapsed;
+                    Sypmthoms_Grid.Visibility = Visibility.Visible;
+                    AdditionalQuestions_Grid.Visibility = Visibility.Collapsed;
+                    return;
+                case EPageState.AdditionalQuestions:
+                    PageTitle_TextBlock.Text = "Dodatkowe pytania";
+                    StartDiagnosis_Button.Visibility = Visibility.Collapsed;
+                    PrimaryData_Grid.Visibility = Visibility.Collapsed;
+                    Sypmthoms_Grid.Visibility = Visibility.Collapsed;
+                    AdditionalQuestions_Grid.Visibility = Visibility.Visible;
+                    return;
+                case EPageState.Result:
+                    PageTitle_TextBlock.Text = "Wynik";
+                    StartDiagnosis_Button.Visibility = Visibility.Collapsed;
+                    PrimaryData_Grid.Visibility = Visibility.Collapsed;
+                    Sypmthoms_Grid.Visibility = Visibility.Collapsed;
+                    AdditionalQuestions_Grid.Visibility = Visibility.Collapsed;
+                    return;
+                default:
+                    return;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

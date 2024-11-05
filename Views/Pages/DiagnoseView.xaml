@@ -55,7 +55,8 @@
                         HorizontalAlignment="Center">
                 <TextBlock Text="Imię"
                      Style="{StaticResource PrimaryTextStyle}"/>
-                <TextBox Width="400"/>
+                <TextBox Width="400"
+                         Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             </StackPanel>
 
             <WrapPanel Grid.Row="1"
@@ -68,7 +69,7 @@
                     <mah:NumericUpDown Width="111"
                                        Speedup="True"
                                        Name="BirthYear_PickerControl"
-                                       Value="1999"
+                                       Value="{Binding YearOfBirth, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                        Minimum="1900"/>
 
                 </StackPanel>
@@ -80,7 +81,7 @@
                                        Speedup="True"
                                        Minimum="120"
                                        Maximum="220"
-                                       Value="165"/>
+                                       Value="{Binding Height, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                 </StackPanel>
 
@@ -91,7 +92,7 @@
                                        Speedup="True"
                                        Minimum="35"
                                        Maximum="250"
-                                       Value="60"/>
+                                       Value="{Binding Weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                 </StackPanel>
 
@@ -106,8 +107,15 @@
 
                 <WrapPanel HorizontalAlignment="Center"
                      Margin="10">
-                    <RadioButton Content="Mężczyzna" IsChecked="True" Margin="0 0 80 0"/>
-                    <RadioButton Content="Kobieta" IsChecked="False"/>
+                    <RadioButton Content="Mężczyzna"
+                                 IsChecked="True"
+                                 Name="Male_RadioButton"
+                                 Checked="GenderRadioButton_Checked"
+                                 Margin="0 0 80 0"/>
+                    <RadioButton Content="Kobieta"
+                                 Name="Female_RadioButton"
+                                 IsChecked="False"
+                                 Checked="GenderRadioButton_Checked"/>
                 </WrapPanel>
 
             </StackPanel>
@@ -119,6 +127,7 @@
                 <Button Style="{StaticResource RegularButton}"
                         Width="130"
                         Height="30"
+                        IsEnabled="{Binding IsPrimaryDataFilled, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="15"
                         Margin="270 0 0 30"
                         Click="NextPage_ButtonClick"
@@ -203,10 +212,24 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Dodatkowe pytania"
-                       HorizontalAlignment="Center"
-                       FontSize="65"
-                       Foreground="HotPink"/>
+            <ScrollViewer VerticalScrollBarVisibility="Visible"
+                          Margin="10">
+
+                <ItemsControl ItemsSource="{Binding SymptomsQuestions}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Question, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                           Style="{StaticResource PrimaryTextStyle}"
+                                           Margin="10 15 10 5"/>
+                                <TextBox Width="450"
+                                         Text="{Binding Answer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </ScrollViewer>
 
             <WrapPanel Grid.Row="1"
                Margin="0 30 0 0"

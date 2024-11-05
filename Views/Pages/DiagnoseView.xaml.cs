@@ -1,4 +1,5 @@
-﻿using DiagnoseMe.ViewModels;
+﻿using DiagnoseMe.Helpers;
+using DiagnoseMe.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,6 +126,17 @@ namespace DiagnoseMe.Views
             }
 
             MessageBox.Show(hejka, "zaznaczone objawy");
+        }
+
+        private void GenderRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel is null)
+                return;
+
+            if (Male_RadioButton.IsChecked == true)
+                ViewModel.Gender = EGender.Male;
+            else
+                ViewModel.Gender = EGender.Female;
         }
     }
 }

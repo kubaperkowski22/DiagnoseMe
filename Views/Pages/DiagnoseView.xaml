@@ -248,7 +248,7 @@
                 Height="30"
                 FontSize="15"
                 Margin="190 0 15 0"
-                Click="Button_Click"
+                Click="ResultButton_Click"
                 Content="Wynik"/>
             </WrapPanel>
 

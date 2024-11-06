@@ -115,17 +115,9 @@ namespace DiagnoseMe.Views
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ResultButton_Click(object sender, RoutedEventArgs e)
         {
-            string hejka = string.Empty;
-
-            foreach(var item in ViewModel.SymptomsButtonsStates)
-            {
-                if (item.Value == true)
-                    hejka += item.Key + '\n';
-            }
-
-            MessageBox.Show(hejka, "zaznaczone objawy");
+            ViewModel.GetDiagnosisResult();
         }
 
         private void GenderRadioButton_Checked(object sender, RoutedEventArgs e)

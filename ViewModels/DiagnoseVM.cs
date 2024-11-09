@@ -137,7 +137,7 @@ namespace DiagnoseMe.ViewModels
             string message = CreateMessageForChatGpt();
             MessageBox.Show(message);
 
-            string response = await ChatGpt.GetChatGPTResponse(message);
+            string response = await ChatGpt.SendMessageAsync(message);
 
             MessageBox.Show(response, "Odpowiedź");
         }

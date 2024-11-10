@@ -1,28 +1,34 @@
-﻿using System;
+﻿using DiagnoseMe.Tools;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Data;
 using System.Windows;
+using System.Windows.Data;
 
-namespace DiagnoseMe.Helpers
+namespace DiagnoseMe.Helpers.Converters
 {
-    class BooleanToVisibilityConverter : IValueConverter
+    public class BoolToVisiBilityConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter.ToString().ToLower() == "reversed")
+            if(value is not bool)
+                return value;
+
+            if (parameter?.ToString().ToLower() == "reversed")
                 value = !(bool)value;
 
-            if (value is Boolean && (bool)value)
-            {
+            if ((bool)value == true)
                 return Visibility.Visible;
-            }
-            return Visibility.Collapsed;
+            else
+                return Visibility.Collapsed;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Visibility && (Visibility)value == Visibility.Visible)
             {
@@ -31,4 +37,5 @@ namespace DiagnoseMe.Helpers
             return false;
         }
     }
+
 }

@@ -14,6 +14,7 @@
 
     <UserControl.Resources>
         <conv:SymptomsDictKeyToValueConverter x:Key="KeyToValueConv"/>
+        <conv:BoolToVisiBilityConverter x:Key="BoolToVisConverter"/>
     </UserControl.Resources>
 
     <Grid>
@@ -253,6 +254,58 @@
             </WrapPanel>
 
         </Grid>
+
+        <Grid Grid.Row="1"
+              Visibility="Collapsed"
+              Name="Result_Grid"
+              Width="auto">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="350"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel HorizontalAlignment="Center"
+                        Margin="0 50 0 0"
+                        Visibility="{Binding IsResultReady, Converter={StaticResource BoolToVisConverter}, ConverterParameter=reversed, UpdateSourceTrigger=PropertyChanged}">
+
+
+                <mah:ProgressRing IsActive="True"/>
+                <TextBlock Text="Trwa diagnozowanie. Proszę czekać."
+                           FontSize="25"
+                           Foreground="{StaticResource TextPrimaryColor}"
+                           HorizontalAlignment="Center"
+                           Margin="0 15"/>
+
+            </StackPanel>
+
+            <ScrollViewer VerticalScrollBarVisibility="Visible"
+                          Margin="10 30 10 10"
+                          Visibility="{Binding IsResultReady, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged}">
+
+                <TextBlock Text="{Binding Result, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                           Style="{StaticResource PrimaryTextStyle}"
+                           TextWrapping="Wrap"
+                           Margin="15 0 15 0">
+
+                </TextBlock>
+
+            </ScrollViewer>
+
+            <WrapPanel Grid.Row="1"
+                       Margin="0 30 0 0"
+                       HorizontalAlignment="Center">
+
+                <Button Style="{StaticResource RegularButton}"
+                        Width="250"
+                        Height="30"
+                        FontSize="15"
+                        Margin="400 0 15 0"
+                        Content="Rozpocznij nową diagnozę"/>
+            </WrapPanel>
+
+        </Grid>
+
 
     </Grid>
 

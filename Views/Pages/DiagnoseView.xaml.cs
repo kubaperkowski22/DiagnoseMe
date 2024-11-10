@@ -1,5 +1,6 @@
 ﻿using DiagnoseMe.Helpers;
 using DiagnoseMe.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,6 +110,7 @@ namespace DiagnoseMe.Views
                     PrimaryData_Grid.Visibility = Visibility.Collapsed;
                     Sypmthoms_Grid.Visibility = Visibility.Collapsed;
                     AdditionalQuestions_Grid.Visibility = Visibility.Collapsed;
+                    Result_Grid.Visibility = Visibility.Visible;
                     return;
                 default:
                     return;
@@ -117,6 +119,13 @@ namespace DiagnoseMe.Views
 
         private void ResultButton_Click(object sender, RoutedEventArgs e)
         {
+            if(ViewModel.CheckIfAllQuestionsAnswered() == false)
+            {
+                MessageBox.Show("Należy odpowiedzieć na wszystkie pytania w celu jak najdokładniejszej diagnozy.", "Odpowiedz na pytania!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            NextPage_ButtonClick(null, null);
             ViewModel.GetDiagnosisResult();
         }
 

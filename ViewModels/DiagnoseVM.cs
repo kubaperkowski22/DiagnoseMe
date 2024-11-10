@@ -10,9 +10,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Animation;
 
 namespace DiagnoseMe.ViewModels
 {
@@ -78,9 +80,37 @@ namespace DiagnoseMe.ViewModels
         }
         private EGender _gender;
 
+        public string Result
+        {
+            get => _result;
+            set
+            {
+                _result = value;
+                OnPropertyChanged(nameof(Result));
+                OnPropertyChanged(nameof(IsResultReady));
+            }
+        }
+        private string _result;
+
+        public string Disease
+        {
+            get => _disease;
+            set
+            {
+                _disease = value;
+                OnPropertyChanged(nameof(Disease));
+            }
+        }
+        private string _disease;
+
         public bool IsPrimaryDataFilled
         {
             get => !string.IsNullOrEmpty(Name);
+        }
+
+        public bool IsResultReady
+        {
+            get => !string.IsNullOrEmpty(Result);
         }
 
         public DiagnoseVM()
@@ -92,6 +122,7 @@ namespace DiagnoseMe.ViewModels
             YearOfBirth = 1999;
             Weight = 60;
             Height = 160;
+            Result = string.Empty;
 
             SymptomsButtonsStates = new ObservableCollection<SymptomState>(Diagnosis.SymptomsDictionary.Select(x => new SymptomState { Key = x.Key, Value = false }));
             SymptomsQuestions = new ObservableCollection<SymptomQuestion>();
@@ -135,19 +166,22 @@ namespace DiagnoseMe.ViewModels
         public async void GetDiagnosisResult()
         {
             string message = CreateMessageForChatGpt();
-            MessageBox.Show(message);
+            //MessageBox.Show(message);
 
-            string response = await ChatGpt.SendMessageAsync(message);
+            Result = string.Empty;
+           // Result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec accumsan ligula, nec consectetur est. Aenean mattis eros eu augue rhoncus hendrerit. Nullam iaculis, arcu id posuere consectetur, massa neque rutrum elit, id pharetra lorem enim id magna. Vestibulum vehicula tellus tellus, ut maximus diam sollicitudin sed. Proin odio erat, cursus eu mi nec, elementum faucibus metus. Ut vestibulum erat ex, vel dignissim odio blandit quis. Suspendisse consectetur felis non ultricies tempor. Curabitur volutpat volutpat viverra. Proin imperdiet est nibh, ut ullamcorper tellus ullamcorper ut. Etiam id elementum libero. Aenean venenatis gravida nunc et cursus. Aliquam dictum eu ex ac iaculis. Quisque ultrices tristique ligula sit amet consequat. In euismod erat id rhoncus laoreet. Phasellus molestie lorem id semper rhoncus. Sed pharetra tellus erat, eget hendrerit tellus tempor sed.\r\n\r\nClass aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam id maximus sapien. Mauris vitae neque lacinia, cursus massa at, aliquam mauris. Vivamus vitae quam lectus. Pellentesque porttitor purus lectus. Cras accumsan blandit est, et sollicitudin nibh efficitur quis. Morbi vitae nisi vel ex dapibus maximus ut in justo. Mauris sodales ante lacus. In justo neque, fringilla eget luctus nec, mattis ut neque. Duis vestibulum eget urna quis tristique. Aenean vel cursus ipsum, id aliquet lacus. Nam tortor nisi, placerat non pellentesque quis, rhoncus nec magna. Mauris lacinia, mi sed bibendum aliquet, felis dolor vulputate metus, porta dapibus lacus elit vitae metus. Sed interdum eros ligula, sit amet laoreet tortor iaculis posuere.\r\n\r\nPhasellus fermentum, eros quis varius efficitur, enim erat mollis ipsum, ac malesuada dolor tellus eget tortor. Nulla turpis quam, dignissim sit amet convallis sit amet, condimentum ac libero. Vestibulum eget neque maximus, tincidunt est a, rhoncus purus. Duis quis metus iaculis, congue massa vel, tempus ex. Nulla finibus non augue a fringilla. Etiam aliquam elit ac mauris varius, eget dapibus lectus aliquet. Ut ornare vestibulum pellentesque.";
+            Result = await ChatGpt.SendMessageAsync(message);
 
-            MessageBox.Show(response, "Odpowiedź");
+           // MessageBox.Show(Result, "Odpowiedź");
         }
 
         public string CreateMessageForChatGpt()
         {
-            string primaryInfoMessage = $"Przeprowadzono wywiad medyczny z pacjentem. Pacjent to {GetEnumDescription(Gender)} o imieniu {Name}. Został urodzony w roku {YearOfBirth}. Ma {Height}cm wzrostu i {Weight}kg wagi.\n\n";
+            string primaryInfoMessage = $"Przeprowadzono wywiad medyczny z pacjentem. Pacjent to {GetEnumDescription(Gender)} o imieniu {Name}. " +
+                                        $"Został urodzony w roku {YearOfBirth}. Ma {Height}cm wzrostu i {Weight}kg wagi.\n\n";
             string symptomsMessage = "Pacjent podał jakie objawy u niego występują i odpowiedział na kilka pytań dotyczących tych objawów. Oto one:\n";
 
-            foreach(var item in SymptomsQuestions)
+            foreach (var item in SymptomsQuestions)
             {
                 if (string.IsNullOrEmpty(item.Answer)) continue;
 
@@ -156,9 +190,39 @@ namespace DiagnoseMe.ViewModels
                 symptomsMessage += "Odpowiedź pacjenta: " + item.Answer + "\n\n";
             }
 
-            string ending = "Na podstawie wyżej przedstawionych danych zdiagnozuj pacjenta i przedstaw mu zalecenia do postawionej diagnozy.";
+            string ending = "Na podstawie wyżej przedstawionych danych zdiagnozuj pacjenta i przedstaw mu zalecenia do postawionej diagnozy. " +
+                            "Nie podawaj kilku możliwości chorób, tylko jedną najbardziej prawdopodobną. Możesz podać prawdopodobną przyczynę.\n" +
+                            "Nazwę choroby przedstaw w pierwszej linii i otocz ją z lewej i prawej strony znakiem '#'";
 
             return primaryInfoMessage + symptomsMessage + ending;
+        }
+
+        private string GetDiseaseName()
+        {
+            if (string.IsNullOrEmpty(Result))
+                return null;
+
+            string disease = string.Empty;
+
+            for(int i=0; i<Result.Length; ++i)
+            {
+                if (Result[i] == '#')
+                {
+                    if(i == 0)
+                        continue;
+                    else
+                        break;
+                }
+                else disease += Result[i];
+            }
+            return disease;
+        }
+
+        public bool CheckIfAllQuestionsAnswered()
+        {
+            if (SymptomsQuestions.Any(x => string.IsNullOrEmpty(x.Answer) == true))
+                return false;
+            return true;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

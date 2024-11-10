@@ -30,7 +30,7 @@ namespace DiagnoseMe.Tools
                 {
                     new { role = "user", content = message }
                 },
-                max_tokens = 1000
+                max_tokens = 2000
             };
 
             var jsonContent = JsonSerializer.Serialize(requestBody);

@@ -51,7 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Windows\LogInWindow.xaml.cs">
+    <Compile Update="Views\Windows\LogInRegisterWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

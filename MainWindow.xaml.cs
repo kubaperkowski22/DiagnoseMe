@@ -117,7 +117,7 @@ namespace DiagnoseMe
         {
             this.HamburgerMenuControl.IsPaneOpen = false;
 
-            var logInWindow = new LogInWindow();
+            var logInWindow = new LogInRegisterWindow();
             logInWindow.Owner = this;
             logInWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 

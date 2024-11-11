@@ -1,4 +1,5 @@
 ﻿using DiagnoseMe.ViewModels;
+using MahApps.Metro.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DiagnoseMe.Models;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace DiagnoseMe.Views
+namespace DiagnoseMe.Views.Windows
 {
     /// <summary>
-    /// Logika interakcji dla klasy LogInView.xaml
+    /// Logika interakcji dla klasy AddEventWindow.xaml
     /// </summary>
-    public partial class LogInView : UserControl
+    public partial class LogInWindow : MetroWindow
     {
         public LogInVM LogInVM
         {
@@ -34,10 +36,10 @@ namespace DiagnoseMe.Views
             }
         }
         private LogInVM _loginVM;
-        public LogInView()
+
+        public LogInWindow()
         {
             InitializeComponent();
-
             LogInVM = new LogInVM();
             this.DataContext = LogInVM;
         }
@@ -50,13 +52,9 @@ namespace DiagnoseMe.Views
         private void LogIn_Button_Click(object sender, RoutedEventArgs e)
         {
             var mainWindwVM = App.Current.Services.GetService<MainWindowVM>();
-
             mainWindwVM.IsUserLoggedIn = true;
-        }
 
-        private void ForgotPassword_Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

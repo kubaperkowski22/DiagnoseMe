@@ -12,6 +12,7 @@ using MahApps.Metro.Controls;
 using DiagnoseMe.Views;
 using DiagnoseMe.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using DiagnoseMe.Views.Windows;
 
 namespace DiagnoseMe
 {
@@ -58,7 +59,7 @@ namespace DiagnoseMe
 
                 if (!ViewModel.IsUserLoggedIn)
                 {
-                    RedirectToLogInView();
+                    OpenLogInWindow();
                     return;
                 }
 
@@ -94,6 +95,11 @@ namespace DiagnoseMe
                 switch (menuItem.Tag.ToString())
                 {
                     case "Account":
+                        if (!ViewModel.IsUserLoggedIn)
+                        {
+                            OpenLogInWindow();
+                            break;
+                        }
                         HamburgerMenuControl.Content = new AccountView();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
@@ -107,10 +113,15 @@ namespace DiagnoseMe
             }
         }
 
-        private void RedirectToLogInView()
+        private void OpenLogInWindow()
         {
-            HamburgerMenuControl.Content = new LogInView();
             this.HamburgerMenuControl.IsPaneOpen = false;
+
+            var logInWindow = new LogInWindow();
+            logInWindow.Owner = this;
+            logInWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            logInWindow.ShowDialog();
         }
 
     }

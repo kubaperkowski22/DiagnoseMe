@@ -1,5 +1,6 @@
 ﻿using DiagnoseMe.Helpers;
 using DiagnoseMe.Tools;
+using DiagnoseMe.Tools.Diagnose;
 using Microsoft.Extensions.DependencyInjection;
 using OpenAI;
 using OpenAI.Chat;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiagnoseMe.Tools
+namespace DiagnoseMe.Tools.Diagnose
 {
     public class SymptomQuestion : INotifyPropertyChanged
     {

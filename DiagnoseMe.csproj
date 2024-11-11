@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Tools\DbContext\" />
     <Folder Include="Views\Controls\" />
   </ItemGroup>
 

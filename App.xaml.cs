@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using DiagnoseMe.ViewModels;
 using DiagnoseMe.Views;
-using DiagnoseMe.Tools;
+using DiagnoseMe.Tools.Diagnose;
 
 namespace DiagnoseMe
 {

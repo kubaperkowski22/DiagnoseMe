@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace DiagnoseMe.Tools
+namespace DiagnoseMe.Tools.Diagnose
 {
     public class Diagnosis
     {

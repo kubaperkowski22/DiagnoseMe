@@ -1,4 +1,4 @@
-﻿using DiagnoseMe.Tools;
+﻿using DiagnoseMe.Tools.Diagnose;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

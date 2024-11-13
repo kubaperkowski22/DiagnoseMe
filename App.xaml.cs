@@ -37,6 +37,7 @@ namespace DiagnoseMe
             //ViewModels
             services.AddSingleton<MainWindowVM>();
             services.AddSingleton<AppointmentsVM>();
+            services.AddSingleton<AccountVM>();
 
             //Helpers
             services.AddSingleton<Diagnosis>();

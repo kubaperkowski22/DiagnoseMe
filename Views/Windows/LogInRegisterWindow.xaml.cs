@@ -55,10 +55,11 @@ namespace DiagnoseMe.Views.Windows
             SetLogInView();
         }
 
-        private void LogIn_Button_Click(object sender, RoutedEventArgs e)
+        private void LogIn_ButtonClick(object sender, RoutedEventArgs e)
         {
-            var mainWindwVM = App.Current.Services.GetService<MainWindowVM>();
-            mainWindwVM.IsUserLoggedIn = true;
+            LogInVM.LoginPassword = LoginPassword_PasswordBox.Password;
+
+            LogInVM.LogIn();
 
             this.Close();
         }

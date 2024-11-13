@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiagnoseMe.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DiagnoseMe.Views
 {
@@ -20,9 +22,26 @@ namespace DiagnoseMe.Views
     /// </summary>
     public partial class AccountView : UserControl
     {
+        public AccountVM ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                _viewModel = value;
+            }
+        }
+        private AccountVM _viewModel;
         public AccountView()
         {
             InitializeComponent();
+
+            ViewModel = App.Current.Services.GetService<AccountVM>();
+            this.DataContext = ViewModel;
+        }
+
+        private void DeleteAccount_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.DeleteUser();
         }
     }
 }

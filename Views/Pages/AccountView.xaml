@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DiagnoseMe.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:AccountVM}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,7 +28,9 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Imię"
                        Style="{StaticResource PrimaryTextStyle}"/>
-            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="Jan" Width="400"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}"
+                       Width="400"
+                       Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         </StackPanel>
 
@@ -35,7 +38,9 @@
             HorizontalAlignment="Center">
             <TextBlock Text="Nazwisko"
                Style="{StaticResource PrimaryTextStyle}"/>
-            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="Kowalski" Width="400"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}"
+                       Width="400"
+                       Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         </StackPanel>
 
@@ -44,7 +49,9 @@
             <TextBlock Text="Płeć"
                        Width="400"
                        Style="{StaticResource PrimaryTextStyle}"/>
-            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="Mężczyzna" Width="400"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}"
+                       Width="400"
+                       Text="{Binding Gender, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         </StackPanel>
 
@@ -52,7 +59,10 @@
             HorizontalAlignment="Center">
             <TextBlock Text="Email"
                Style="{StaticResource PrimaryTextStyle}"/>
-            <TextBlock Style="{StaticResource PrimaryTextStyle}" Text="jankowalski123@gmail.com" Width="400" FontSize="14"/>
+            <TextBlock Style="{StaticResource PrimaryTextStyle}"
+                       Width="400" FontSize="14"
+                       Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
 
         </StackPanel>
 
@@ -61,21 +71,23 @@
             <TextBlock Text="Hasło"
                        Style="{StaticResource PrimaryTextStyle}"/>
             <TextBlock Width="400"
-                         Style="{StaticResource PrimaryTextStyle}" Text="⚫⚫⚫⚫⚫⚫⚫⚫"/>
+                       Style="{StaticResource PrimaryTextStyle}"
+                       Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
 
 
         <WrapPanel Grid.Row="6"
            HorizontalAlignment="Center">
             <Button Style="{StaticResource RegularButton}"
-            Width="190"
-            Height="30"
-            Margin="0 0 15 0"
-            Content="Edytuj dane"/>
+                    Width="190"
+                    Height="30"
+                    Margin="0 0 15 0"
+                    Content="Edytuj dane"/>
             <Button Style="{StaticResource DangerButton}"
-            Width="190"
-            Height="30"
-            Content="Usuń konto"/>
+                    Width="190"
+                    Height="30"
+                    Click="DeleteAccount_ButtonClick"
+                    Content="Usuń konto"/>
         </WrapPanel>
     </Grid>
 

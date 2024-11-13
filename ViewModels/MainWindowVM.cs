@@ -5,20 +5,31 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using DiagnoseMe.Models;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DiagnoseMe.ViewModels
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
+        public User LoggedUser
+        {
+            get => _loggedUser;
+            set
+            {
+                _loggedUser = value;
+
+                OnPropertyChanged(nameof(LoggedUser));
+            }
+        }
+        private User _loggedUser;
+
+
         public bool IsUserLoggedIn
         {
             get => _isUserLoggedIn;
             set
             {
-                //if (!_isUserLoggedIn && value)
-                //    App.Current.Services.GetService<MainWindow>().HamburgerMenuControl.Content = null;
-
                 _isUserLoggedIn = value;
             }
         }

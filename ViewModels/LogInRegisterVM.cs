@@ -1,4 +1,8 @@
 ﻿using DiagnoseMe.Helpers;
+using DiagnoseMe.Models;
+using DiagnoseMe.Tools.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DiagnoseMe.ViewModels
 {
@@ -57,27 +62,29 @@ namespace DiagnoseMe.ViewModels
         }
         private string _email;
 
-        public SecureString Password
+        public string Password
         {
             get => _password;
             set
             {
                 _password = value;
                 OnPropertyChanged(nameof(Password));
+                OnPropertyChanged(nameof(ArePasswordsTheSame));
             }
         }
-        private SecureString _password;
+        private string _password;
 
-        public SecureString RepeatedPassword
+        public string RepeatedPassword
         {
             get => _repeatedPassword;
             set
             {
                 _repeatedPassword = value;
                 OnPropertyChanged(nameof(RepeatedPassword));
+                OnPropertyChanged(nameof(ArePasswordsTheSame));
             }
         }
-        private SecureString _repeatedPassword;
+        private string _repeatedPassword;
 
         #endregion
 
@@ -107,9 +114,51 @@ namespace DiagnoseMe.ViewModels
 
         #endregion
 
+        public bool ArePasswordsTheSame
+        {
+            get => Password == RepeatedPassword ? true : false;
+        }
+
+        private AppDbContext _database;
         public LogInRegisterVM() 
         {
+            _database = App.Current.Services.GetRequiredService<AppDbContext>();
+        }
 
+        public async Task LogIn(string email, string password)
+        {
+            User user = (User)_database.Users.Select(x => x.Email == email && x.Password == password);
+            if (user != null)
+            {
+                var mainWindowVM = App.Current.Services.GetService<MainWindowVM>();
+
+                mainWindowVM.LoggedUser = user;
+                mainWindowVM.IsUserLoggedIn = true;
+            }
+        }
+
+        public async Task AddUserAsync()
+        {
+            try
+            {
+                if(_database.Users.Select(x => x.Email == Email) != null)
+                {
+                    MessageBox.Show("Konto o podanym adresie email już istnieje!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                var user = new User(Name, Surname, Gender, Email, Password);
+
+                _database.Users.Add(user);
+
+                await _database.SaveChangesAsync();
+
+                MessageBox.Show("Użytkownik został dodany.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił błąd podczas dodawania użytkownika: {ex.Message}");
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

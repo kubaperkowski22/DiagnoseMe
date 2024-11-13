@@ -12,10 +12,10 @@ namespace DiagnoseMe.Tools.Data
     {
         public DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            // Podaj connection string do bazy danych Azure SQL
-            optionsBuilder.UseSqlServer("Server=tcp:diagnoseme.database.windows.net,1433;Initial Catalog=DiagnoseMe;Persist Security Info=False;User ID=diagnoseme;Password=Diagnose1@34;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
         }
+
     }
 }

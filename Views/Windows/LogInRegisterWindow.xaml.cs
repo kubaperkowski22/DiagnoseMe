@@ -63,6 +63,25 @@ namespace DiagnoseMe.Views.Windows
             this.Close();
         }
 
+        private void CreateAccount_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(RegisterPassword_PasswordBox.Password))
+            {
+                MessageBox.Show("Hasło nie może być puste!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (!LogInVM.ArePasswordsTheSame)
+            {
+                MessageBox.Show("Hasła muszą być takie same!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LogInVM.Password = RegisterPassword_PasswordBox.Password;
+
+            LogInVM.AddUserAsync();
+            this.Close();
+        }
+
         private void SetRegisterView()
         {
             LogIn_Grid.Visibility = Visibility.Collapsed;

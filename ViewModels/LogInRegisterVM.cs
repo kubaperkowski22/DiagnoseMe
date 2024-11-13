@@ -101,7 +101,7 @@ namespace DiagnoseMe.ViewModels
         }
         private string _loginEmail;
 
-        public SecureString LoginPassword
+        public string LoginPassword
         {
             get => _loginPassword;
             set
@@ -110,7 +110,7 @@ namespace DiagnoseMe.ViewModels
                 OnPropertyChanged(nameof(LoginPassword));
             }
         }
-        private SecureString _loginPassword;
+        private string _loginPassword;
 
         #endregion
 
@@ -125,15 +125,16 @@ namespace DiagnoseMe.ViewModels
             _database = App.Current.Services.GetRequiredService<AppDbContext>();
         }
 
-        public async Task LogIn(string email, string password)
+        public void LogIn()
         {
-            User user = (User)_database.Users.Select(x => x.Email == email && x.Password == password);
+            User user = _database.Users.FirstOrDefault(x => x.Email == LoginEmail && x.Password == LoginPassword);
             if (user != null)
             {
-                var mainWindowVM = App.Current.Services.GetService<MainWindowVM>();
-
-                mainWindowVM.LoggedUser = user;
-                mainWindowVM.IsUserLoggedIn = true;
+                App.Current.Services.GetService<MainWindowVM>().LoggedUser = user;
+            }
+            else
+            {
+                MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

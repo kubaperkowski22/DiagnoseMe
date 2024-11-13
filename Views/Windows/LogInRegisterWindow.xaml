@@ -41,7 +41,8 @@
                 <TextBlock Text="Hasło"
                        Style="{StaticResource PrimaryTextStyle}"/>
                 <PasswordBox Width="400"
-                     PasswordChar="⚫"/>
+                             Name="LoginPassword_PasswordBox"
+                             PasswordChar="⚫"/>
 
             </StackPanel>
 
@@ -52,7 +53,7 @@
                 Height="30"
                 Margin="10 0 35 0"
                 Content="Zaloguj"
-                Click="LogIn_Button_Click"/>
+                Click="LogIn_ButtonClick"/>
                 <Button Style="{StaticResource RegularButton}"
                 Width="150"
                 Height="30"

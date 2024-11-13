@@ -12,17 +12,22 @@ namespace DiagnoseMe.ViewModels
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
-        public User LoggedUser
+        public User? LoggedUser
         {
             get => _loggedUser;
             set
             {
                 _loggedUser = value;
 
+                if (_loggedUser is null)
+                    IsUserLoggedIn = false;
+                else
+                    IsUserLoggedIn = true;
+
                 OnPropertyChanged(nameof(LoggedUser));
             }
         }
-        private User _loggedUser;
+        private User? _loggedUser;
 
 
         public bool IsUserLoggedIn

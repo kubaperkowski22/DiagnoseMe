@@ -12,10 +12,10 @@ namespace DiagnoseMe.Tools.Data
     {
         public DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            // Podaj connection string do bazy danych Azure SQL
-            optionsBuilder.UseSqlServer("REDACTED_CONNECTION_STRING");
+
         }
+
     }
 }

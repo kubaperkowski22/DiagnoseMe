@@ -21,7 +21,7 @@ namespace DiagnoseMe.Models
             Surname = surname;
             Gender = gender;
             Email = email;
-            Password = password.GetHashCode().ToString();
+            Password = password;
         }
     }
 }

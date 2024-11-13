@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using DiagnoseMe.ViewModels;
 using DiagnoseMe.Views;
 using DiagnoseMe.Tools.Diagnose;
+using DiagnoseMe.Tools.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiagnoseMe
 {
@@ -38,6 +40,9 @@ namespace DiagnoseMe
 
             //Helpers
             services.AddSingleton<Diagnosis>();
+
+            //Database
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer("REDACTED_CONNECTION_STRING"));
 
             return services.BuildServiceProvider();
         }

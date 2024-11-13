@@ -128,7 +128,8 @@
                 <TextBlock Text="Hasło"
                        Style="{StaticResource PrimaryTextStyle}"/>
                 <PasswordBox Width="400"
-                     PasswordChar="⚫"/>
+                             Name="RegisterPassword_PasswordBox"
+                             PasswordChar="⚫"/>
 
             </StackPanel>
 
@@ -137,7 +138,8 @@
                 <TextBlock Text="Powtórz hasło"
                        Style="{StaticResource PrimaryTextStyle}"/>
                 <PasswordBox Width="400"
-                     PasswordChar="⚫"/>
+                             Name="RegisterRepeatedPassword_PasswordBox"
+                             PasswordChar="⚫"/>
             </StackPanel>
 
             <WrapPanel Grid.Row="7"
@@ -147,6 +149,7 @@
                     Width="190"
                     Height="30"
                     Margin="0 0 15 0"
+                    Click="CreateAccount_ButtonClick"
                     Content="Stwórz konto"/>
                 <Button Style="{StaticResource RegularButton}"
                     Width="190"

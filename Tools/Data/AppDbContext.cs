@@ -16,6 +16,12 @@ namespace DiagnoseMe.Tools.Data
         {
 
         }
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(App.GetConnectionString());
+            }
+        }
     }
 }

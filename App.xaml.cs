@@ -43,10 +43,14 @@ namespace DiagnoseMe
             services.AddSingleton<Diagnosis>();
 
             //Database
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Server=tcp:diagnoseme.database.windows.net,1433;Initial Catalog=DiagnoseMe;Persist Security Info=False;User ID=diagnoseme;Password=Diagnose1@34;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(GetConnectionString()));
 
             return services.BuildServiceProvider();
         }
 
+        public static string GetConnectionString()
+        {
+            return "Server=tcp:diagnoseme.database.windows.net,1433;Initial Catalog=DiagnoseMe;Persist Security Info=False;User ID=diagnoseme;Password=Diagnose1@34;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        }
     }
 }

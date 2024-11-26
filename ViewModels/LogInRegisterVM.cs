@@ -127,14 +127,22 @@ namespace DiagnoseMe.ViewModels
 
         public void LogIn()
         {
-            User user = _database.Users.FirstOrDefault(x => x.Email == LoginEmail && x.Password == LoginPassword);
-            if (user != null)
+            try
             {
-                App.Current.Services.GetService<MainWindowVM>().LoggedUser = user;
+                User user = _database.Users.FirstOrDefault(x => x.Email == LoginEmail && x.Password == LoginPassword);
+
+                if (user is not null)
+                {
+                    App.Current.Services.GetService<MainWindowVM>().LoggedUser = user;
+                }
+                else
+                {
+                    MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Wystąpił błąd podczas logowania.\n\n{ex.Message}");
             }
         }
 
@@ -142,7 +150,7 @@ namespace DiagnoseMe.ViewModels
         {
             try
             {
-                if(_database.Users.Select(x => x.Email == Email) != null)
+                if(_database.Users.FirstOrDefault(x => x.Email == Email) != null)
                 {
                     MessageBox.Show("Konto o podanym adresie email już istnieje!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;

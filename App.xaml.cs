@@ -43,10 +43,14 @@ namespace DiagnoseMe
             services.AddSingleton<Diagnosis>();
 
             //Database
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer("REDACTED_CONNECTION_STRING"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(GetConnectionString()));
 
             return services.BuildServiceProvider();
         }
 
+        public static string GetConnectionString()
+        {
+            return "REDACTED_CONNECTION_STRING";
+        }
     }
 }

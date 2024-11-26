@@ -1,6 +1,10 @@
-﻿using System;
+﻿using DiagnoseMe.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,7 +15,10 @@ namespace DiagnoseMe.Models
 {
     public class Appointment : INotifyPropertyChanged
     {
+        [Key]
         public int Id { get; set; }
+        [ForeignKey("UserId")]
+        public int UserId { get; set; }
         public string Name
         {
             get => _name;
@@ -53,6 +60,7 @@ namespace DiagnoseMe.Models
         }
         public Appointment(string name, DateTime dateTime, string? localization = null)
         {
+            UserId = App.Current.Services.GetService<MainWindowVM>().LoggedUser.Id;
             Name = name;
             DateTime = dateTime;
             Localization = localization;

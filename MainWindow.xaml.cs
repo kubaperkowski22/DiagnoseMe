@@ -71,6 +71,7 @@ namespace DiagnoseMe
                         break;
                     case "Calendar":
                         HamburgerMenuControl.Content = _appointmentsView;
+                        _appointmentsView.ViewModel.RefreshAppointments();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "History":
@@ -123,6 +124,5 @@ namespace DiagnoseMe
 
             logInWindow.ShowDialog();
         }
-
     }
 }

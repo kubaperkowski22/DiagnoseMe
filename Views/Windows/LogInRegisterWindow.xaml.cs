@@ -59,9 +59,8 @@ namespace DiagnoseMe.Views.Windows
         {
             LogInVM.LoginPassword = LoginPassword_PasswordBox.Password;
 
-            LogInVM.LogIn();
-
-            this.Close();
+            if(LogInVM.LogIn())
+                this.Close();
         }
 
         private void CreateAccount_ButtonClick(object sender, RoutedEventArgs e)

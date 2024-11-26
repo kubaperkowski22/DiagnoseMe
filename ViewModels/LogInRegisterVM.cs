@@ -125,7 +125,7 @@ namespace DiagnoseMe.ViewModels
             _database = App.Current.Services.GetRequiredService<AppDbContext>();
         }
 
-        public void LogIn()
+        public bool LogIn()
         {
             try
             {
@@ -134,15 +134,18 @@ namespace DiagnoseMe.ViewModels
                 if (user is not null)
                 {
                     App.Current.Services.GetService<MainWindowVM>().LoggedUser = user;
+                    return true;
                 }
                 else
                 {
                     MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Wystąpił błąd podczas logowania.\n\n{ex.Message}");
+                return false;
             }
         }
 

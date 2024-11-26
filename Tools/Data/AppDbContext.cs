@@ -12,6 +12,7 @@ namespace DiagnoseMe.Tools.Data
     {
         public DbSet<User> Users { get; set; }
 
+        public AppDbContext() { }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 

@@ -33,11 +33,13 @@ namespace DiagnoseMe
             //Views
             services.AddSingleton<MainWindow>();
             services.AddSingleton<AppointmentsView>();
+            services.AddSingleton<HistoryView>();
 
             //ViewModels
             services.AddSingleton<MainWindowVM>();
             services.AddSingleton<AppointmentsVM>();
             services.AddSingleton<AccountVM>();
+            services.AddSingleton<HistoryVM>();
 
             //Helpers
             services.AddSingleton<Diagnosis>();

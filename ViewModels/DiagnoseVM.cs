@@ -1,5 +1,8 @@
-﻿using DiagnoseMe.Helpers;
+﻿using ControlzEx.Standard;
+using DiagnoseMe.Helpers;
+using DiagnoseMe.Models;
 using DiagnoseMe.Tools;
+using DiagnoseMe.Tools.Data;
 using DiagnoseMe.Tools.Diagnose;
 using Microsoft.Extensions.DependencyInjection;
 using OpenAI;
@@ -21,6 +24,7 @@ namespace DiagnoseMe.ViewModels
 {
     public class DiagnoseVM : INotifyPropertyChanged
     {
+        private AppDbContext _db;
         public ObservableCollection<SymptomState> SymptomsButtonsStates { get; set; }
         public ObservableCollection<SymptomQuestion> SymptomsQuestions { get; set; }
         public Diagnosis Diagnosis { get; set; }
@@ -116,6 +120,7 @@ namespace DiagnoseMe.ViewModels
 
         public DiagnoseVM()
         {
+            _db = App.Current.Services.GetService<AppDbContext>();
             Diagnosis = App.Current.Services.GetService<Diagnosis>();
             ChatGpt = new ChatGptService();
 
@@ -172,8 +177,16 @@ namespace DiagnoseMe.ViewModels
             Result = string.Empty;
            // Result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec accumsan ligula, nec consectetur est. Aenean mattis eros eu augue rhoncus hendrerit. Nullam iaculis, arcu id posuere consectetur, massa neque rutrum elit, id pharetra lorem enim id magna. Vestibulum vehicula tellus tellus, ut maximus diam sollicitudin sed. Proin odio erat, cursus eu mi nec, elementum faucibus metus. Ut vestibulum erat ex, vel dignissim odio blandit quis. Suspendisse consectetur felis non ultricies tempor. Curabitur volutpat volutpat viverra. Proin imperdiet est nibh, ut ullamcorper tellus ullamcorper ut. Etiam id elementum libero. Aenean venenatis gravida nunc et cursus. Aliquam dictum eu ex ac iaculis. Quisque ultrices tristique ligula sit amet consequat. In euismod erat id rhoncus laoreet. Phasellus molestie lorem id semper rhoncus. Sed pharetra tellus erat, eget hendrerit tellus tempor sed.\r\n\r\nClass aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam id maximus sapien. Mauris vitae neque lacinia, cursus massa at, aliquam mauris. Vivamus vitae quam lectus. Pellentesque porttitor purus lectus. Cras accumsan blandit est, et sollicitudin nibh efficitur quis. Morbi vitae nisi vel ex dapibus maximus ut in justo. Mauris sodales ante lacus. In justo neque, fringilla eget luctus nec, mattis ut neque. Duis vestibulum eget urna quis tristique. Aenean vel cursus ipsum, id aliquet lacus. Nam tortor nisi, placerat non pellentesque quis, rhoncus nec magna. Mauris lacinia, mi sed bibendum aliquet, felis dolor vulputate metus, porta dapibus lacus elit vitae metus. Sed interdum eros ligula, sit amet laoreet tortor iaculis posuere.\r\n\r\nPhasellus fermentum, eros quis varius efficitur, enim erat mollis ipsum, ac malesuada dolor tellus eget tortor. Nulla turpis quam, dignissim sit amet convallis sit amet, condimentum ac libero. Vestibulum eget neque maximus, tincidunt est a, rhoncus purus. Duis quis metus iaculis, congue massa vel, tempus ex. Nulla finibus non augue a fringilla. Etiam aliquam elit ac mauris varius, eget dapibus lectus aliquet. Ut ornare vestibulum pellentesque.";
             Result = await ChatGpt.SendMessageAsync(message);
-
            // MessageBox.Show(Result, "Odpowiedź");
+
+            var mainWindowVM = App.Current.Services.GetService<MainWindowVM>();
+            if(mainWindowVM.IsUserLoggedIn)
+            {
+                var diagnosisResult = GetDiagnosisResultObject(mainWindowVM.LoggedUser.Id);
+                _db.DiagnosisResults.Add(diagnosisResult);
+
+                await _db.SaveChangesAsync();
+            }
         }
 
         public string CreateMessageForChatGpt()
@@ -199,25 +212,28 @@ namespace DiagnoseMe.ViewModels
             return primaryInfoMessage + symptomsMessage + ending;
         }
 
-        private string GetDiseaseName()
+        private DiagnosisResult GetDiagnosisResultObject(int userId)
         {
+            DiagnosisResult diagnosisResult = new();
+
             if (string.IsNullOrEmpty(Result))
                 return null;
 
-            string disease = string.Empty;
+            var paragraphs = Result.Split(new[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-            for(int i=0; i<Result.Length; ++i)
+            var cleanedParagraphs = new List<string>();
+            for(int i = 0; i<paragraphs.Length; ++i)
             {
-                if (Result[i] == '#')
-                {
-                    if(i == 0)
-                        continue;
-                    else
-                        break;
-                }
-                else disease += Result[i];
+                paragraphs[i].Trim();
             }
-            return disease;
+
+            diagnosisResult.UserId = userId;
+            diagnosisResult.DiseaseName = paragraphs[0];
+            diagnosisResult.Description = paragraphs[1];
+            diagnosisResult.Recommendations = paragraphs[2];
+            diagnosisResult.DateOnly = DateOnly.FromDateTime(DateTime.Now);
+
+            return diagnosisResult;
         }
 
         public bool CheckIfAllQuestionsAnswered()

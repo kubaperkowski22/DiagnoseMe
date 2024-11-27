@@ -192,8 +192,9 @@ namespace DiagnoseMe.ViewModels
             }
 
             string ending = "Na podstawie wyżej przedstawionych danych zdiagnozuj pacjenta i przedstaw mu zalecenia do postawionej diagnozy. " +
-                            "Nie podawaj kilku możliwości chorób, tylko jedną najbardziej prawdopodobną. Możesz podać prawdopodobną przyczynę.\n" +
-                            "Nazwę choroby przedstaw w pierwszej linii i otocz ją z lewej i prawej strony znakiem '#'";
+                            "Nie podawaj kilku możliwości chorób, tylko jedną najbardziej prawdopodobną.\n" +
+                            "Nazwę choroby przedstaw w pierwszej linii. W kolejnym akapicie linii napisz krótki opis, a w ostatnim akapicie wypunktuj zalecenia." +
+                            "Nie pisz nic na tematy niedotyczące tej diagnozy.";
 
             return primaryInfoMessage + symptomsMessage + ending;
         }

@@ -228,6 +228,8 @@ namespace DiagnoseMe.ViewModels
             }
 
             diagnosisResult.UserId = userId;
+            if (paragraphs[0].Contains(':'))
+                paragraphs[0].Substring(paragraphs[0].IndexOf(':') + 1).Trim();
             diagnosisResult.DiseaseName = paragraphs[0];
             diagnosisResult.Description = paragraphs[1];
             diagnosisResult.Recommendations = paragraphs[2];

@@ -42,6 +42,7 @@
                        Style="{StaticResource PrimaryTextStyle}"/>
                 <PasswordBox Width="400"
                              Name="LoginPassword_PasswordBox"
+                             KeyDown="EnterButton_KeyDown"
                              PasswordChar="⚫"/>
 
             </StackPanel>

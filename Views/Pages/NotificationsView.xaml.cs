@@ -38,7 +38,7 @@ namespace DiagnoseMe.Views
         {
             InitializeComponent();
 
-            ViewModel = new NotificationsVM();
+            ViewModel = App.Current.Services.GetService<NotificationsVM>();
             this.DataContext = ViewModel;
         }
     }

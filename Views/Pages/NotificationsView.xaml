@@ -11,7 +11,6 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -21,30 +20,15 @@
                    HorizontalAlignment="Center"/>
 
 
-        <Button Name="DeleteDiagnosisButton"
-                    Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    Style="{StaticResource DangerButton}"
-                    Width="130"
-                    Height="30"
-                    Margin="570 0 0 0"
-                    FontSize="15">
-            <Button.Content>
-                <WrapPanel>
-                    <fa:FontAwesome Icon="Trash" Foreground="{StaticResource TextPrimaryColor}" Margin="0 0 7 0" FontSize="18" VerticalAlignment="Center"/>
-                    <TextBlock Text="Usuń" Foreground="{StaticResource TextPrimaryColor}"/>
-                </WrapPanel>
-            </Button.Content>
-        </Button>
-
-        <Border Grid.Row="2"
+        <Border Grid.Row="1"
                 BorderThickness="0.7"
                 BorderBrush="Black"
                 Width="700"
                 HorizontalAlignment="Center">
 
             <DataGrid Width="700"
-                      Name="Diagnosis_DataGrid"
+                      Name="Notifications_DataGrid"
+                      ItemsSource="{Binding Notifications, UpdateSourceTrigger=PropertyChanged}"
                       RowStyle="{DynamicResource DataGridRowStyle1}"
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                       CellStyle="{DynamicResource DataGridCellStyle1}"
@@ -52,17 +36,19 @@
                       CanUserAddRows="False"
                       CanUserReorderColumns="False"
                       CanUserResizeColumns="True"
+                      IsReadOnly="True"
                       CanUserDeleteRows="False"
                       
                       CanUserResizeRows="False">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Diagnoza"
-                                        Width="160"/>
+                    <DataGridTextColumn Header="Nazwa"
+                                        Width="500"
+                                        FontWeight="SemiBold"
+                                        Binding="{Binding Title}"/>
                     <DataGridTextColumn Header="Data"
-                                        Width="210"/>
-                    <DataGridTextColumn Header="Zalecenia"
-                                        Width="300"/>
+                                        Width="170"
+                                        Binding="{Binding Date}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

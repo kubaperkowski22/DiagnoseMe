@@ -1,5 +1,6 @@
 ﻿using DiagnoseMe.Models;
 using DiagnoseMe.Tools.Data;
+using DiagnoseMe.Views.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,18 @@ namespace DiagnoseMe.ViewModels
                 DiagnosisResults = new ObservableCollection<DiagnosisResult>(results);
                 OnPropertyChanged(nameof(DiagnosisResults));
             }
+            else
+            {
+                DiagnosisResults?.Clear();
+                OnPropertyChanged(nameof(DiagnosisResults));
+            }
+        }
+
+        public void OpenDetailsWindow(DiagnosisResult diagnosisResult)
+        {
+            var detailsWindow = new DiseaseDetailsWindow(diagnosisResult);
+
+            detailsWindow.Show();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

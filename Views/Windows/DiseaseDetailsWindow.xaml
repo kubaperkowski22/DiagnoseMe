@@ -1,0 +1,109 @@
+﻿<mah:MetroWindow x:Class="DiagnoseMe.Views.Windows.DiseaseDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiagnoseMe.Views.Windows"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        ShowInTaskbar="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Style="{StaticResource MetroWindowStyle}"
+        Title="Szczegóły" Height="430" Width="480">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel HorizontalAlignment="Center"
+                Margin="0 10 0 0">
+
+            <StackPanel HorizontalAlignment="Left"
+                        Margin="0 5">
+
+                <TextBlock Text="Diagnoza"
+                           FontWeight="Medium"
+                           Style="{StaticResource PrimaryTextStyle}"/>
+
+                <TextBlock Name="DiseaseName_TextBlock"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource PrimaryTextStyle}"
+                           Width="400"/>
+
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left"
+                    Height="60">
+
+                <TextBlock Text="Data zdiagnozowania"
+                           Margin="0 0 0 5"
+                           FontWeight="Medium"
+                           Style="{StaticResource PrimaryTextStyle}"/>
+
+                <TextBlock Name="Date_TextBlock"
+                           Style="{StaticResource PrimaryTextStyle}"
+                           Width="400"/>
+
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left"
+                        Margin="0 0 0 10">
+
+                <TextBlock Text="Opis"
+                           FontWeight="Medium"
+                           Style="{StaticResource PrimaryTextStyle}"/>
+
+                    <TextBlock Name="Description_TextBox"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PrimaryTextStyle}"
+                               Width="400"/>
+                
+
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left">
+
+                <TextBlock Text="Zalecenia"
+                           FontWeight="Medium"
+                           Style="{StaticResource PrimaryTextStyle}"/>
+
+                    <TextBlock Name="Recommendations_TextBlock"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PrimaryTextStyle}"
+                               Width="400"/>
+                
+
+            </StackPanel>
+
+            <WrapPanel Margin="0 0 0 0"
+                       Width="400"
+                       VerticalAlignment="Bottom">
+                
+                <Button Content="Usuń"
+                        Name="Close_Button"
+                        Style="{StaticResource DangerButton}"
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        Height="25"
+                        Margin="0 10"
+                        VerticalAlignment="Center"
+                        Click="Delete_Button_Click"/>
+                
+                <Button Content="Zamknij"
+                        Name="Delete_Button"
+                        Style="{StaticResource RegularButton}"
+                        Width="100"
+                        HorizontalAlignment="Right"
+                        Height="25"
+                        Margin="200 10 0 10"
+                        VerticalAlignment="Center"
+                        Click="Close_Button_Click"/>
+            </WrapPanel>
+            
+
+        </StackPanel>
+        </ScrollViewer>
+        
+
+    </Grid>
+</mah:MetroWindow>

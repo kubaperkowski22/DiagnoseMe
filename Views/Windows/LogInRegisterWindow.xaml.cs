@@ -108,5 +108,16 @@ namespace DiagnoseMe.Views.Windows
             else
                 LogInVM.Gender = EGender.Female;
         }
+
+        private void EnterButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LogInVM.LoginPassword = LoginPassword_PasswordBox.Password;
+
+                if (LogInVM.LogIn())
+                    this.Close();
+            }
+        }
     }
 }

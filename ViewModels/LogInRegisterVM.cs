@@ -166,6 +166,8 @@ namespace DiagnoseMe.ViewModels
                 await _database.SaveChangesAsync();
 
                 MessageBox.Show("Użytkownik został dodany.");
+
+                App.Current.Services.GetService<MainWindowVM>().LoggedUser = user;
             }
             catch (Exception ex)
             {

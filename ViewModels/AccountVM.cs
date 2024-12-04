@@ -96,8 +96,13 @@ namespace DiagnoseMe.ViewModels
 
         public async Task DeleteUser()
         {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Potwierdź operację", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                return;
+
             try
             {
+                DeleteAllUserData(User.Id);
+
                 _database.Remove(User);
 
                 await _database.SaveChangesAsync();
@@ -110,6 +115,23 @@ namespace DiagnoseMe.ViewModels
             {
                 MessageBox.Show($"Nie udało się usunąć użytkownika.\n{ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        public async Task DeleteAllUserData(int userId)
+        {
+            foreach (var diagnosis in _database.DiagnosisResults)
+            {
+                if(diagnosis.UserId == userId)
+                    _database.Remove(diagnosis);
+            }
+
+            foreach (var appointment in _database.Appointments)
+            {
+                if (appointment.UserId == userId)
+                    _database.Remove(appointment);
+            }
+
+            await _database.SaveChangesAsync();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

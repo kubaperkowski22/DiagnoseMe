@@ -41,6 +41,7 @@ namespace DiagnoseMe.ViewModels
 
             await _db.SaveChangesAsync();
             OnPropertyChanged(nameof(Appointments));
+            RefreshNotifications();
         }
 
         public async Task RemoveAppointment(Appointment appointment)
@@ -50,6 +51,15 @@ namespace DiagnoseMe.ViewModels
 
             await _db.SaveChangesAsync();
             OnPropertyChanged(nameof(Appointments));
+            RefreshNotifications();
+        }
+
+        public void RefreshNotifications()
+        {
+            if (_LoggedUser is not null)
+            {
+                App.Current.Services.GetService<NotificationsVM>().RefreshNotifications();
+            }
         }
 
         public void RefreshAppointments()

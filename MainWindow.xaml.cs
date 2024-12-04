@@ -34,6 +34,11 @@ namespace DiagnoseMe
         }
         private MainWindowVM _viewModel;
 
+        public bool AreActiveNotifications
+        {
+            get => ViewModel.NotificationsVM.Notifications.Count > 0 ? true : false;
+        }
+
         private AppointmentsView _appointmentsView;
         private HistoryView _historyView;
         public MainWindow()

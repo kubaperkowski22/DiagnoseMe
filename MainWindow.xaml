@@ -9,11 +9,18 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:vm="clr-namespace:DiagnoseMe.ViewModels"
+        xmlns:conv="clr-namespace:DiagnoseMe.Helpers.Converters"
         d:DataContext="{d:DesignInstance Type=vm:MainWindowVM}"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         Style="{StaticResource MetroWindowStyle}"
         Title="DiagnoseMe" Height="600" Width="1000">
+
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <conv:BoolToVisiBilityConverter x:Key="BoolToVisibilityConv"/>
+        </ResourceDictionary>
+    </Controls:MetroWindow.Resources>
 
     <Grid>
         <Grid.Resources>
@@ -112,16 +119,18 @@
 
                     <Controls:HamburgerMenuIconItem Label="Powiadomienia"
                                                     Tag="Notifications">
+
                         <Controls:HamburgerMenuIconItem.Icon>
                             <Controls:Badged BadgePlacementMode="BottomRight"
                                              BadgeBackground="Red"
                                              BadgeForeground="Red"
                                              Badge="."
                                              BadgeFontSize="38"
-                                             Foreground="{StaticResource ResourceKey=TextSecondaryColor}"
-                                             Visibility="Visible">
+                                             Visibility="Visible"
+                                             Foreground="{StaticResource ResourceKey=TextSecondaryColor}">
 
-                                <fa:ImageAwesome Icon="Bell" Foreground="{StaticResource AccentColor}" x:Name="BellIcon"/>
+                                <fa:ImageAwesome Icon="Bell" Foreground="{StaticResource AccentColor}" x:Name="BellIcon"
+                                                 Visibility="{Binding AreActiveNotifications, Converter={StaticResource BoolToVisibilityConv}, UpdateSourceTrigger=PropertyChanged}"/>
                                 
                             </Controls:Badged>
                         </Controls:HamburgerMenuIconItem.Icon>

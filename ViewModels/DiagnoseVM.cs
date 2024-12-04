@@ -228,11 +228,26 @@ namespace DiagnoseMe.ViewModels
             }
 
             diagnosisResult.UserId = userId;
+
+            int index;
+
             if (paragraphs[0].Contains(':'))
-                paragraphs[0].Substring(paragraphs[0].IndexOf(':') + 1).Trim();
-            diagnosisResult.DiseaseName = paragraphs[0];
-            diagnosisResult.Description = paragraphs[1];
-            diagnosisResult.Recommendations = paragraphs[2];
+            {
+                index = paragraphs[0].IndexOf(":") + 1;
+                paragraphs[0] = paragraphs[0].Substring(index);
+            }
+
+            diagnosisResult.DiseaseName = paragraphs[0].Trim();
+
+            diagnosisResult.Description = paragraphs[1].Trim();
+
+            if (paragraphs[2].Contains(':'))
+            {
+                index = paragraphs[2].IndexOf(":") + 1;
+                paragraphs[2] = paragraphs[2].Substring(index);
+            }
+            diagnosisResult.Recommendations = paragraphs[2].Trim();
+
             diagnosisResult.DateOnly = DateOnly.FromDateTime(DateTime.Now);
 
             return diagnosisResult;

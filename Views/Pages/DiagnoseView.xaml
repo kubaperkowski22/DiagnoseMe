@@ -283,17 +283,27 @@
                           Margin="10 30 10 10"
                           Visibility="{Binding IsResultReady, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged}">
 
-                <TextBlock Text="{Binding Result, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                           Style="{StaticResource PrimaryTextStyle}"
-                           TextWrapping="Wrap"
-                           Margin="15 0 15 0">
+                <StackPanel>
+                    
+                    <TextBlock Text="{Binding Result, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                               Style="{StaticResource PrimaryTextStyle}"
+                               TextWrapping="Wrap"
+                               Margin="15 0 15 25">
+                    </TextBlock>
 
-                </TextBlock>
+                    <TextBlock Style="{StaticResource PrimaryTextStyle}"
+                               Foreground="{StaticResource DangerColor}"
+                               FontWeight="Medium"
+                               FontSize="16"
+                               Text="To nie jest dokładna diagnoza medyczna. W celu wiarygodnej diagnozy udaj się do lekarza."/>
+                </StackPanel>
+                
 
             </ScrollViewer>
 
             <WrapPanel Grid.Row="1"
                        Margin="0 30 0 0"
+                       Visibility="{Binding IsResultReady, Converter={StaticResource BoolToVisConverter}, UpdateSourceTrigger=PropertyChanged}"
                        HorizontalAlignment="Center">
 
                 <Button Style="{StaticResource RegularButton}"

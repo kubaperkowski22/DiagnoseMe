@@ -12,7 +12,6 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -21,52 +20,46 @@
                    Style="{StaticResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
 
-
-            <Button Name="DeleteDiagnosisButton"
-                    Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    Style="{StaticResource DangerButton}"
-                    Width="130"
-                    Height="30"
-                    Margin="570 0 0 0"
-                    FontSize="15"
-                    Click="DeleteDiagnosisButton_Click">
-                <Button.Content>
-                    <WrapPanel>
-                        <fa:FontAwesome Icon="Trash" Foreground="{StaticResource TextPrimaryColor}" Margin="0 0 7 0" FontSize="18" VerticalAlignment="Center"/>
-                        <TextBlock Text="Usuń" Foreground="{StaticResource TextPrimaryColor}"/>
-                    </WrapPanel>
-                </Button.Content>
-            </Button>
-
-        <Border Grid.Row="2"
+        <Border Grid.Row="1"
                 BorderThickness="0.7"
                 BorderBrush="Black"
                 Width="700"
                 HorizontalAlignment="Center">
 
-            <DataGrid Width="700"
-                      Name="Diagnosis_DataGrid"
-                      RowStyle="{DynamicResource DataGridRowStyle1}"
-                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                      CellStyle="{DynamicResource DataGridCellStyle1}"
-                      Style="{DynamicResource DataGridStyle1}"
-                      CanUserAddRows="False"
-                      CanUserReorderColumns="False"
-                      CanUserResizeColumns="True"
-                      CanUserDeleteRows="False"
-                      
-                      CanUserResizeRows="False">
+            <ItemsControl ItemsSource="{Binding DiagnosisResults, UpdateSourceTrigger=PropertyChanged}"
+                          Margin="10">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="3 6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="420" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Diagnoza"
-                                        Width="160"/>
-                    <DataGridTextColumn Header="Data"
-                                        Width="210"/>
-                    <DataGridTextColumn Header="Zalecenia"
-                                        Width="300"/>
-                </DataGrid.Columns>
-            </DataGrid>
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding DiseaseName}"
+                                       VerticalAlignment="Center"
+                                       FontSize="16"
+                                       ToolTip="{Binding DiseaseName}"
+                                       Style="{StaticResource PrimaryTextStyle}"/>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding DateOnly}"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       FontSize="16"
+                                       Style="{StaticResource PrimaryTextStyle}"/>
+
+                            <Button Grid.Column="2"
+                                    Content="Szczegóły"
+                                    Margin="5 0 0 0"
+                                    Click="ShowDetails_ButtonClick"
+                                    Style="{StaticResource RegularButton}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Border>
 
 

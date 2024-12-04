@@ -35,6 +35,7 @@ namespace DiagnoseMe
         private MainWindowVM _viewModel;
 
         private AppointmentsView _appointmentsView;
+        private HistoryView _historyView;
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +43,8 @@ namespace DiagnoseMe
             ViewModel = App.Current.Services.GetService<MainWindowVM>();
             this.DataContext = ViewModel;
 
-            _appointmentsView = App.Current.Services.GetService<AppointmentsView>() as AppointmentsView;
+            _appointmentsView = App.Current.Services.GetService<AppointmentsView>();
+            _historyView = App.Current.Services.GetService<HistoryView>();
         }
 
         private void HamburgerMenuControl_OnItemClick(object sender, ItemClickEventArgs e)
@@ -75,7 +77,8 @@ namespace DiagnoseMe
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "History":
-                        HamburgerMenuControl.Content = new HistoryView();
+                        HamburgerMenuControl.Content = _historyView;
+                        _historyView.ViewModel.RefresHistory();
                         this.HamburgerMenuControl.IsPaneOpen = false;
                         break;
                     case "Notifications":

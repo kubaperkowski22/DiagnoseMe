@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DiagnoseMe"
         mc:Ignorable="d"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:tools="clr-namespace:DiagnoseMe.Tools"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:vm="clr-namespace:DiagnoseMe.ViewModels"
@@ -82,14 +83,14 @@
             <Controls:HamburgerMenu.ItemsSource>
                 <Controls:HamburgerMenuItemCollection>
 
-                    <Controls:HamburgerMenuIconItem Label="Zdiagnozuj się"
+                    <Controls:HamburgerMenuIconItem Label="{tools:Translate @diagnose_yourself}"
                                                 Tag="Diagnosis">
                         <Controls:HamburgerMenuIconItem.Icon>
                             <fa:ImageAwesome Icon="Plus" Foreground="{StaticResource AccentColor}"/>
                         </Controls:HamburgerMenuIconItem.Icon>
                     </Controls:HamburgerMenuIconItem>
 
-                    <Controls:HamburgerMenuIconItem Label="Szukaj lekarza"
+                    <Controls:HamburgerMenuIconItem Label="{Binding [@search_doctor], Source={StaticResource Localization}}"
                                                 Tag="FindDoctor">
                         <Controls:HamburgerMenuIconItem.Icon>
                             <fa:ImageAwesome Icon="Search" Foreground="{StaticResource AccentColor}"/>

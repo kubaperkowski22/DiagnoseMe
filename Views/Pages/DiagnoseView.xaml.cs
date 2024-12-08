@@ -1,4 +1,5 @@
 ﻿using DiagnoseMe.Helpers;
+using DiagnoseMe.Tools;
 using DiagnoseMe.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -59,6 +60,9 @@ namespace DiagnoseMe.Views
 
         private void StartDiagnosis_Button_Click(object sender, RoutedEventArgs e)
         {
+            LocalizationManager.Instance.ChangeLanguage("en");
+            return;
+
             PageTitle_TextBlock.Text = "Uzupełnij dane";
             StartDiagnosis_Button.Visibility = Visibility.Collapsed;
             PrimaryData_Grid.Visibility = Visibility.Visible;

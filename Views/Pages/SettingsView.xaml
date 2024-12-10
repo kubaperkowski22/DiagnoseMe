@@ -7,10 +7,49 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock FontSize="48"
-           Text="Settings page"
-           Foreground="HotPink"
-           VerticalAlignment="Center"
-           HorizontalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Ustawienia"
+                   Grid.Row="0"
+                   Style="{DynamicResource HeaderTextStyle}"
+                   HorizontalAlignment="Center"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Visible"
+                      Grid.Row="1"
+                      Margin="1 10">
+
+            <StackPanel>
+                <Expander Header="Twoje konto"
+                          IsEnabled="{Binding IsUserLoggedIn, UpdateSourceTrigger=PropertyChanged}"
+                          Style="{DynamicResource Expander}">
+
+                    <local:AccountView x:Name="AccountView_Control"
+                                       IsEnabled="{Binding IsUserLoggedIn, UpdateSourceTrigger=PropertyChanged}"/>
+                </Expander>
+                <Expander Header="Motyw"
+                          Style="{DynamicResource Expander}">
+
+                    <Button Style="{DynamicResource RegularButton}"
+                            Click="ChangeTheme_Button_Click"
+                            Width="200"
+                            Margin="15"
+                            Content="Zmień motyw"/>
+
+                </Expander>
+                <Expander Header="Język"
+                          IsEnabled="False"
+                          Style="{DynamicResource Expander}">
+
+                    <TextBlock Text="nie dziala zmiana języków :(" FontSize="25" Foreground="{DynamicResource PrimaryColor}"/>
+
+                </Expander>
+            </StackPanel>
+
+        </ScrollViewer>
+
+
     </Grid>
 </UserControl>

@@ -13,7 +13,7 @@
         d:DataContext="{d:DesignInstance Type=vm:MainWindowVM}"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Style="{StaticResource MetroWindowStyle}"
+        Style="{DynamicResource MetroWindowStyle}"
         Title="DiagnoseMe" Height="600" Width="1000">
 
     <Controls:MetroWindow.Resources>
@@ -77,11 +77,11 @@
 
         <Controls:HamburgerMenu x:Name="HamburgerMenuControl"
                             Foreground="White"
-                            PaneForeground="{StaticResource AccentColor}"
-                            PaneBackground="{StaticResource PrimaryColor}"
+                            PaneForeground="{DynamicResource AccentColor}"
+                            PaneBackground="{DynamicResource PrimaryColor}"
                             IsPaneOpen="False"
-                            ItemTemplate="{StaticResource MenuItemTemplate}"
-                            OptionsItemTemplate="{StaticResource OptionsMenuItemTemplate}"
+                            ItemTemplate="{DynamicResource MenuItemTemplate}"
+                            OptionsItemTemplate="{DynamicResource OptionsMenuItemTemplate}"
                             DisplayMode="CompactInline"
                             ItemClick="HamburgerMenuControl_OnItemClick"
                             OptionsItemClick="HamburgerMenuControl_OptionsItemClick">
@@ -92,28 +92,28 @@
                     <Controls:HamburgerMenuIconItem Label="Zdiagnozuj się"
                                                 Tag="Diagnosis">
                         <Controls:HamburgerMenuIconItem.Icon>
-                            <fa:ImageAwesome Icon="Plus" Foreground="{StaticResource AccentColor}"/>
+                            <fa:ImageAwesome Icon="Plus" Style="{DynamicResource ImageAwesome}"/>
                         </Controls:HamburgerMenuIconItem.Icon>
                     </Controls:HamburgerMenuIconItem>
 
                     <Controls:HamburgerMenuIconItem Label="Szukaj lekarza"
                                                 Tag="FindDoctor">
                         <Controls:HamburgerMenuIconItem.Icon>
-                            <fa:ImageAwesome Icon="Search" Foreground="{StaticResource AccentColor}"/>
+                            <fa:ImageAwesome Icon="Search" Style="{DynamicResource ImageAwesome}"/>
                         </Controls:HamburgerMenuIconItem.Icon>
                     </Controls:HamburgerMenuIconItem>
 
                     <Controls:HamburgerMenuIconItem Label="Kalendarz"
                                                 Tag="Calendar">
                         <Controls:HamburgerMenuIconItem.Icon>
-                            <fa:ImageAwesome Icon="Calendar" Foreground="{StaticResource AccentColor}"/>
+                            <fa:ImageAwesome Icon="Calendar" Style="{DynamicResource ImageAwesome}"/>
                         </Controls:HamburgerMenuIconItem.Icon>
                     </Controls:HamburgerMenuIconItem>
 
                     <Controls:HamburgerMenuIconItem Label="Historia"
                                                 Tag="History">
                         <Controls:HamburgerMenuIconItem.Icon>
-                            <fa:ImageAwesome Icon="Book" Foreground="{StaticResource AccentColor}"/>
+                            <fa:ImageAwesome Icon="Book" Style="{DynamicResource ImageAwesome}"/>
                         </Controls:HamburgerMenuIconItem.Icon>
                     </Controls:HamburgerMenuIconItem>
 
@@ -121,18 +121,12 @@
                                                     Tag="Notifications">
 
                         <Controls:HamburgerMenuIconItem.Icon>
-                            <Controls:Badged BadgePlacementMode="BottomRight"
-                                             BadgeBackground="Red"
-                                             BadgeForeground="Red"
-                                             Badge="."
-                                             BadgeFontSize="38"
-                                             Visibility="Visible"
-                                             Foreground="{StaticResource ResourceKey=TextSecondaryColor}">
 
-                                <fa:ImageAwesome Icon="Bell" Foreground="{StaticResource AccentColor}" x:Name="BellIcon"
-                                                 Visibility="{Binding AreActiveNotifications, Converter={StaticResource BoolToVisibilityConv}, UpdateSourceTrigger=PropertyChanged}"/>
-                                
-                            </Controls:Badged>
+                            <fa:ImageAwesome Icon="Bell"
+                                             Style="{DynamicResource ImageAwesome}"
+                                             x:Name="BellIcon"
+                                             Visibility="{Binding AreActiveNotifications, Converter={StaticResource BoolToVisibilityConv}, UpdateSourceTrigger=PropertyChanged}"/>
+
                         </Controls:HamburgerMenuIconItem.Icon>
                     </Controls:HamburgerMenuIconItem>
 
@@ -143,17 +137,10 @@
             <Controls:HamburgerMenu.OptionsItemsSource>
                 <Controls:HamburgerMenuItemCollection>
 
-                    <Controls:HamburgerMenuIconItem Label="Konto"
-                                                Tag="Account">
-                        <Controls:HamburgerMenuIconItem.Icon>
-                            <fa:ImageAwesome Icon="User" Foreground="{StaticResource AccentColor}"/>
-                        </Controls:HamburgerMenuIconItem.Icon>
-                    </Controls:HamburgerMenuIconItem>
-
                     <Controls:HamburgerMenuIconItem Label="Ustawienia"
                             Tag="Settings">
                         <Controls:HamburgerMenuIconItem.Icon>
-                            <fa:ImageAwesome Icon="Gear" Foreground="{StaticResource AccentColor}"/>
+                            <fa:ImageAwesome Icon="Gear" Style="{DynamicResource ImageAwesome}"/>
                         </Controls:HamburgerMenuIconItem.Icon>
                     </Controls:HamburgerMenuIconItem>
 
@@ -163,7 +150,6 @@
             <Controls:HamburgerMenu.Content>
                 <Grid>
                     <fa:FontAwesome Icon="PlusCircle"
-                                    Foreground="{StaticResource AccentColor}"
                                     Opacity="0.20"
                                     FontSize="250"
                                     HorizontalAlignment="Center"

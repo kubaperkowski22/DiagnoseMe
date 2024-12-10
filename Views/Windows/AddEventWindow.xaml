@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         ShowInTaskbar="False"
         ResizeMode="NoResize"
-        Style="{StaticResource MetroWindowStyle}"
+        Style="{DynamicResource MetroWindowStyle}"
         Title="Dodaj wydarzenie" Height="320" Width="480">
     
     <Grid>
@@ -20,7 +20,7 @@
                         Height="75">
 
                 <TextBlock Text="Nazwa wydarzenia"
-                               Style="{StaticResource PrimaryTextStyle}"/>
+                               Style="{DynamicResource PrimaryTextStyle}"/>
 
                 <TextBox Name="EventName_TextBox"
                          Width="400"
@@ -30,7 +30,7 @@
                            Name="EventName_ValidationWrapPanel">
 
                     <fa:FontAwesome Icon="ExclamationCircle"
-                                    Foreground="{StaticResource DangerColor}"
+                                    Foreground="{DynamicResource DangerColor}"
                                     FontSize="19"
                                     VerticalAlignment="Center"
                                     Margin="0 5 7 0"/>
@@ -39,7 +39,7 @@
                                Width="220"
                                Name="ValidationMessage_TextBlock"
                                VerticalAlignment="Center"
-                               Foreground="{StaticResource DangerColor}"
+                               Foreground="{DynamicResource DangerColor}"
                                FontWeight="SemiBold"
                                Text="Nazwa nie może być pusta!"
                                TextWrapping="Wrap"/>
@@ -52,7 +52,7 @@
 
                 <TextBlock Text="Data"
                            Margin="0 0 0 5"
-                           Style="{StaticResource PrimaryTextStyle}"/>
+                           Style="{DynamicResource PrimaryTextStyle}"/>
                 
                 <WrapPanel Height="50">
 
@@ -78,7 +78,7 @@
                                     Name="DateTimePickerControl"
                                     IsTodayHighlighted="True"
                                     IsClockVisible="False"
-                                    Background="{StaticResource MainBackgroundColor}"
+                                    Background="{DynamicResource MainBackgroundColor}"
                                     SelectedDateTimeChanged="DateTimePickerControl_SelectedDateTimeChanged"
                                     mah:TextBoxHelper.Watermark="Wybierz datę">
                         <mah:DateTimePicker.Style>
@@ -95,7 +95,7 @@
                     <WrapPanel Name="DateTime_ValidationTextBlock"
                                Visibility="Hidden">
                         <fa:FontAwesome Icon="ExclamationCircle"
-                                    Foreground="{StaticResource DangerColor}"
+                                    Foreground="{DynamicResource DangerColor}"
                                     FontSize="19"
                                     VerticalAlignment="Center"
                                     Margin="10 0 10 0"/>
@@ -103,7 +103,7 @@
                         <TextBlock FontSize="14"
                                Width="220"
                                VerticalAlignment="Center"
-                               Foreground="{StaticResource DangerColor}"
+                               Foreground="{DynamicResource DangerColor}"
                                FontWeight="SemiBold"
                                TextWrapping="Wrap"
                                Text="Wybrana data nie może być wcześniejsza niż aktualna data!"/>
@@ -118,7 +118,7 @@
                         Margin="0 0 0 20">
 
                 <TextBlock Text="Lokalizacja"
-                               Style="{StaticResource PrimaryTextStyle}"/>
+                               Style="{DynamicResource PrimaryTextStyle}"/>
 
                 <TextBox Name="Localisation_TextBox"
                          Width="400"/>
@@ -127,7 +127,7 @@
 
             <Button Content="Dodaj"
                     Name="Add_Button"
-                    Style="{StaticResource RegularButton}"
+                    Style="{DynamicResource RegularButton}"
                     Width="100"
                     HorizontalAlignment="Right"
                     Height="25"

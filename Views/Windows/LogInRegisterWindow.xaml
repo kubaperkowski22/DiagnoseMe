@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         ShowInTaskbar="False"
         ResizeMode="NoResize"
-        Style="{StaticResource MetroWindowStyle}"
+        Style="{DynamicResource MetroWindowStyle}"
         Title="Logowanie" Height="320" Width="480">
 
     <StackPanel>
@@ -24,13 +24,13 @@
             <TextBlock Text="Zaloguj się"
                    Grid.Row="0"
                    Margin="20 10 20 20"
-                   Style="{StaticResource HeaderTextStyle}"
+                   Style="{DynamicResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
 
             <StackPanel Grid.Row="1"
                     HorizontalAlignment="Center">
                 <TextBlock Text="Email"
-                    Style="{StaticResource PrimaryTextStyle}"/>
+                    Style="{DynamicResource PrimaryTextStyle}"/>
                 <TextBox Width="400"
                          Text="{Binding LoginEmail, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
@@ -39,7 +39,7 @@
             <StackPanel Grid.Row="2"
                     HorizontalAlignment="Center">
                 <TextBlock Text="Hasło"
-                       Style="{StaticResource PrimaryTextStyle}"/>
+                       Style="{DynamicResource PrimaryTextStyle}"/>
                 <PasswordBox Width="400"
                              Name="LoginPassword_PasswordBox"
                              KeyDown="EnterButton_KeyDown"
@@ -49,13 +49,13 @@
 
             <WrapPanel Grid.Row="3"
                HorizontalAlignment="Center">
-                <Button Style="{StaticResource RegularButton}"
+                <Button Style="{DynamicResource RegularButton}"
                 Width="150"
                 Height="30"
                 Margin="10 0 35 0"
                 Content="Zaloguj"
                 Click="LogIn_ButtonClick"/>
-                <Button Style="{StaticResource RegularButton}"
+                <Button Style="{DynamicResource RegularButton}"
                 Width="150"
                 Height="30"
                 Margin="35 0 10 0"
@@ -81,13 +81,13 @@
 
             <TextBlock Text="Zarejestruj się"
                    Grid.Row="0"
-                   Style="{StaticResource HeaderTextStyle}"
+                   Style="{DynamicResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
 
             <StackPanel Grid.Row="1"
                 HorizontalAlignment="Center">
                 <TextBlock Text="Imię"
-                   Style="{StaticResource PrimaryTextStyle}"/>
+                   Style="{DynamicResource PrimaryTextStyle}"/>
                 <TextBox Width="400"
                          Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
@@ -96,7 +96,7 @@
             <StackPanel Grid.Row="2"
                     HorizontalAlignment="Center">
                 <TextBlock Text="Nazwisko"
-                       Style="{StaticResource PrimaryTextStyle}"/>
+                       Style="{DynamicResource PrimaryTextStyle}"/>
                 <TextBox Width="400"
                          Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
@@ -106,7 +106,7 @@
                 HorizontalAlignment="Center">
                 <TextBlock Text="Płeć"
                    Width="400"
-                   Style="{StaticResource PrimaryTextStyle}"/>
+                   Style="{DynamicResource PrimaryTextStyle}"/>
 
                 <WrapPanel HorizontalAlignment="Center"
                    Margin="10">
@@ -119,7 +119,7 @@
             <StackPanel Grid.Row="4"
                     HorizontalAlignment="Center">
                 <TextBlock Text="Email"
-                       Style="{StaticResource PrimaryTextStyle}"/>
+                       Style="{DynamicResource PrimaryTextStyle}"/>
                 <TextBox Width="400"
                          Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
@@ -128,7 +128,7 @@
             <StackPanel Grid.Row="5"
                 HorizontalAlignment="Center">
                 <TextBlock Text="Hasło"
-                       Style="{StaticResource PrimaryTextStyle}"/>
+                       Style="{DynamicResource PrimaryTextStyle}"/>
                 <PasswordBox Width="400"
                              Name="RegisterPassword_PasswordBox"
                              PasswordChar="⚫"/>
@@ -138,7 +138,7 @@
             <StackPanel Grid.Row="6"
                     HorizontalAlignment="Center">
                 <TextBlock Text="Powtórz hasło"
-                       Style="{StaticResource PrimaryTextStyle}"/>
+                       Style="{DynamicResource PrimaryTextStyle}"/>
                 <PasswordBox Width="400"
                              Name="RegisterRepeatedPassword_PasswordBox"
                              PasswordChar="⚫"/>
@@ -147,13 +147,13 @@
             <WrapPanel Grid.Row="7"
                        Margin="0 15 0 0"
                     HorizontalAlignment="Center">
-                <Button Style="{StaticResource RegularButton}"
+                <Button Style="{DynamicResource RegularButton}"
                     Width="190"
                     Height="30"
                     Margin="0 0 15 0"
                     Click="CreateAccount_ButtonClick"
                     Content="Stwórz konto"/>
-                <Button Style="{StaticResource RegularButton}"
+                <Button Style="{DynamicResource RegularButton}"
                     Width="190"
                     Height="30"
                     Click="ShowLogInView_Button_Click"

@@ -43,5 +43,13 @@ namespace DiagnoseMe.Views
         {
             ViewModel.DeleteUser();
         }
+
+        private void LogOut_Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginFirst_Grid.Visibility = Visibility.Visible;
+            YourAccount_Grid.Visibility = Visibility.Collapsed;
+
+            ViewModel.LogOut();
+        }
     }
 }

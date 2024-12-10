@@ -41,6 +41,7 @@ namespace DiagnoseMe
             services.AddSingleton<AccountVM>();
             services.AddSingleton<HistoryVM>();
             services.AddSingleton<NotificationsVM>();
+            services.AddSingleton<SettingsVM>();
 
             //Helpers
             services.AddSingleton<Diagnosis>();

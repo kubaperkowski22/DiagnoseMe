@@ -21,14 +21,14 @@
 
         <TextBlock Text="Kalendarz"
                    Grid.Row="0"
-                   Style="{StaticResource HeaderTextStyle}"
+                   Style="{DynamicResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
 
         <WrapPanel Grid.Row="1"
                    HorizontalAlignment="Center">
 
             <Button x:Name="AddEventButton"
-                    Style="{StaticResource RegularButton}"
+                    Style="{DynamicResource RegularButton}"
                     Width="130"
                     Margin="0 0 50 0"
                     FontSize="15"
@@ -36,14 +36,14 @@
                     Click="AddEventButton_Click">
                 <Button.Content>
                     <WrapPanel>
-                        <fa:FontAwesome Icon="Plus" Foreground="{StaticResource TextPrimaryColor}" Margin="0 0 7 0" FontSize="18" VerticalAlignment="Center"/>
-                        <TextBlock Text="Dodaj" Foreground="{StaticResource TextPrimaryColor}"/>
+                        <fa:FontAwesome Icon="Plus" Foreground="{DynamicResource TextPrimaryColor}" Margin="0 0 7 0" FontSize="18" VerticalAlignment="Center"/>
+                        <TextBlock Text="Dodaj" Foreground="{DynamicResource TextPrimaryColor}"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>
             
             <Button Name="DeleteEventButton"
-                    Style="{StaticResource DangerButton}"
+                    Style="{DynamicResource DangerButton}"
                     Width="130"
                     Height="30"
                     FontSize="15"
@@ -51,8 +51,8 @@
                     HorizontalAlignment="Left">
                 <Button.Content>
                     <WrapPanel>
-                        <fa:FontAwesome Icon="Trash" Foreground="{StaticResource TextPrimaryColor}" Margin="0 0 7 0" FontSize="18" VerticalAlignment="Center"/>
-                        <TextBlock Text="Usuń" Foreground="{StaticResource TextPrimaryColor}"/>
+                        <fa:FontAwesome Icon="Trash" Foreground="{DynamicResource TextPrimaryColor}" Margin="0 0 7 0" FontSize="18" VerticalAlignment="Center"/>
+                        <TextBlock Text="Usuń" Foreground="{DynamicResource TextPrimaryColor}"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>

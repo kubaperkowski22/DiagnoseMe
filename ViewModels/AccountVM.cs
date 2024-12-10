@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using DiagnoseMe.Tools.Data;
 using System.Windows;
+using DiagnoseMe.Views;
 
 namespace DiagnoseMe.ViewModels
 {
@@ -96,12 +97,12 @@ namespace DiagnoseMe.ViewModels
 
         public async Task DeleteUser()
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Potwierdź operację", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Potwierdź operację", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 return;
 
             try
             {
-                DeleteAllUserData(User.Id);
+                await DeleteAllUserData(User.Id);
 
                 _database.Remove(User);
 
@@ -132,6 +133,15 @@ namespace DiagnoseMe.ViewModels
             }
 
             await _database.SaveChangesAsync();
+        }
+
+        public void LogOut()
+        {
+            var mainWindowVM = App.Current.Services.GetService<MainWindowVM>();
+
+            mainWindowVM.LoggedUser = null;
+
+            OnPropertyChanged(nameof(mainWindowVM));
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

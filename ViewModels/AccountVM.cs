@@ -135,6 +135,15 @@ namespace DiagnoseMe.ViewModels
             await _database.SaveChangesAsync();
         }
 
+        public async Task UpdateUserData()
+        {
+            _database.Users.Update(User);
+
+            await _database.SaveChangesAsync();
+
+            SetUserProperties();
+        }
+
         public void LogOut()
         {
             var mainWindowVM = App.Current.Services.GetService<MainWindowVM>();

@@ -72,6 +72,7 @@
             <TextBlock Text="Hasło"
                        Style="{StaticResource PrimaryTextStyle}"/>
             <TextBlock Width="400"
+                       Name="Password_TextBlock"
                        Style="{StaticResource PrimaryTextStyle}"
                        Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
@@ -83,6 +84,7 @@
                     Width="190"
                     Height="30"
                     Margin="0 0 15 0"
+                    Click="EditData_Button_Click"
                     Content="Edytuj dane"/>
             <Button Style="{StaticResource RegularButton}"
                     Width="190"
@@ -104,6 +106,93 @@
                        HorizontalAlignment="Center"
                        FontSize="24"
                        Style="{StaticResource HeaderTextStyle}"/>
+        </Grid>
+
+        <Grid Name="EditAccount_Grid"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="87"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Edytuj dane"
+           Grid.Row="0"
+           Style="{DynamicResource HeaderTextStyle}"
+           HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1"
+        HorizontalAlignment="Center">
+                <TextBlock Text="Imię"
+           Style="{DynamicResource PrimaryTextStyle}"/>
+                <TextBox Width="400"
+                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+            HorizontalAlignment="Center">
+                <TextBlock Text="Nazwisko"
+               Style="{DynamicResource PrimaryTextStyle}"/>
+                <TextBox Width="400"
+                 Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+        HorizontalAlignment="Center">
+                <TextBlock Text="Płeć"
+           Width="400"
+           Style="{DynamicResource PrimaryTextStyle}"/>
+
+                <WrapPanel HorizontalAlignment="Center"
+           Margin="10">
+                    <RadioButton Content="Mężczyzna" IsChecked="True" Margin="0 0 80 0" Name="Male_RadioButton" Checked="GenderRadioButton_Checked"/>
+                    <RadioButton Content="Kobieta" IsChecked="False" Checked="GenderRadioButton_Checked"/>
+                </WrapPanel>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="4"
+            HorizontalAlignment="Center">
+                <TextBlock Text="Email"
+               Style="{DynamicResource PrimaryTextStyle}"/>
+                <TextBox Width="400"
+                 Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="5"
+        HorizontalAlignment="Center">
+                <TextBlock Text="Hasło"
+               Style="{DynamicResource PrimaryTextStyle}"/>
+                <PasswordBox Width="400"
+                     Name="EditPassword_PasswordBox"
+                             
+                     PasswordChar="⚫"/>
+
+            </StackPanel>
+
+            <WrapPanel Grid.Row="7"
+               Margin="0 15 0 0"
+            HorizontalAlignment="Center">
+                <Button Style="{DynamicResource RegularButton}"
+            Width="190"
+            Height="30"
+            Margin="0 0 15 0"
+            Click="Cancel_ButtonClick"
+            Content="Anuluj"/>
+                <Button Style="{DynamicResource RegularButton}"
+            Width="190"
+            Height="30"
+            Click="SaveChanges_Button_Click"
+            Content="Zapisz"/>
+            </WrapPanel>
+
         </Grid>
     </Grid>
 

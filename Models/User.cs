@@ -25,5 +25,9 @@ namespace DiagnoseMe.Models
             Email = email;
             Password = password;
         }
+        public User()
+        {
+
+        }
     }
 }

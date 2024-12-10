@@ -55,12 +55,27 @@ namespace DiagnoseMe.Views.Windows
             SetLogInView();
         }
 
-        private void LogIn_ButtonClick(object sender, RoutedEventArgs e)
+        private async void LogIn_ButtonClick(object sender, RoutedEventArgs e)
         {
             LogInVM.LoginPassword = LoginPassword_PasswordBox.Password;
 
-            if(LogInVM.LogIn())
+            App.Current.Dispatcher.BeginInvoke(new Action(() => {
+                LogIn_Grid.IsEnabled = false;
+                LogInTextBlock.Visibility = Visibility.Collapsed;
+                LoggingIn_WrapPanel.Visibility = Visibility.Visible;
+                LoggingIn_WrapPanel.IsEnabled = true;
+            }));
+
+            var isSuccess = await LogInVM.LogIn();
+            if (isSuccess)
                 this.Close();
+
+            App.Current.Dispatcher.BeginInvoke(new Action(() => {
+                LogIn_Grid.IsEnabled = true;
+                LogInTextBlock.Visibility = Visibility.Visible;
+                LoggingIn_WrapPanel.Visibility = Visibility.Collapsed;
+                LoggingIn_WrapPanel.IsEnabled = false;
+            }));
         }
 
         private void CreateAccount_ButtonClick(object sender, RoutedEventArgs e)
@@ -109,14 +124,29 @@ namespace DiagnoseMe.Views.Windows
                 LogInVM.Gender = EGender.Female;
         }
 
-        private void EnterButton_KeyDown(object sender, KeyEventArgs e)
+        private async void EnterButton_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 LogInVM.LoginPassword = LoginPassword_PasswordBox.Password;
 
-                if (LogInVM.LogIn())
+                App.Current.Dispatcher.BeginInvoke(new Action(() => {
+                    LogIn_Grid.IsEnabled = false;
+                    LogInTextBlock.Visibility = Visibility.Collapsed;
+                    LoggingIn_WrapPanel.Visibility = Visibility.Visible;
+                    LoggingIn_WrapPanel.IsEnabled = true;
+                }));
+
+                var isSuccess = await LogInVM.LogIn();
+                if (isSuccess)
                     this.Close();
+
+                App.Current.Dispatcher.BeginInvoke(new Action(() => {
+                    LogIn_Grid.IsEnabled = true;
+                    LogInTextBlock.Visibility = Visibility.Visible;
+                    LoggingIn_WrapPanel.Visibility = Visibility.Collapsed;
+                    LoggingIn_WrapPanel.IsEnabled = false;
+                }));
             }
         }
     }

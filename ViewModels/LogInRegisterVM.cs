@@ -125,7 +125,7 @@ namespace DiagnoseMe.ViewModels
             _database = App.Current.Services.GetRequiredService<AppDbContext>();
         }
 
-        public bool LogIn()
+        public async Task<bool> LogIn()
         {
             try
             {

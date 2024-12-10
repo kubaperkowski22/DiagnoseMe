@@ -23,9 +23,26 @@
 
             <TextBlock Text="Zaloguj się"
                    Grid.Row="0"
+                   Name="LogInTextBlock"
                    Margin="20 10 20 20"
                    Style="{DynamicResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
+
+            <WrapPanel Grid.Row="0"
+                       VerticalAlignment="Center"
+                       Visibility="Collapsed"
+                       Name="LoggingIn_WrapPanel"
+                       HorizontalAlignment="Center">
+
+                <TextBlock Text="Trwa logowanie"
+                        Margin="20 10 25 20"
+                        Style="{DynamicResource HeaderTextStyle}"
+                        HorizontalAlignment="Center"/>
+                <mah:ProgressRing IsActive="True"
+                                  Width="40"
+                                  Foreground="{DynamicResource AccentColor}"/>
+
+            </WrapPanel>
 
             <StackPanel Grid.Row="1"
                     HorizontalAlignment="Center">

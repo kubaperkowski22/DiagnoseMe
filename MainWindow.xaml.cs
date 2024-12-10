@@ -45,6 +45,11 @@ namespace DiagnoseMe
         {
             InitializeComponent();
 
+            ApplyTheme(Properties.Settings.Default.IsDefaultTheme ? "DefaultTheme.xaml" : "SecondTheme.xaml");
+
+            HamburgerMenuControl.Content = new DiagnoseView();
+            this.HamburgerMenuControl.IsPaneOpen = false;
+
             ViewModel = App.Current.Services.GetService<MainWindowVM>();
             this.DataContext = ViewModel;
 
@@ -66,7 +71,9 @@ namespace DiagnoseMe
 
                 if (!ViewModel.IsUserLoggedIn)
                 {
+                    HamburgerMenuControl.Content = new DiagnoseView();
                     OpenLogInWindow();
+                    HamburgerMenuControl.SelectedIndex = -1;
                     return;
                 }
 
@@ -99,26 +106,18 @@ namespace DiagnoseMe
         private void HamburgerMenuControl_OptionsItemClick(object sender, ItemClickEventArgs e)
         {
             var menuItem = e.ClickedItem as HamburgerMenuIconItem;
-            if (menuItem is not null)
+            if (menuItem is not null && (string)menuItem.Tag == "Settings")
             {
-                switch (menuItem.Tag.ToString())
+                if (!ViewModel.IsUserLoggedIn)
                 {
-                    case "Account":
-                        if (!ViewModel.IsUserLoggedIn)
-                        {
-                            OpenLogInWindow();
-                            break;
-                        }
-                        HamburgerMenuControl.Content = new AccountView();
-                        this.HamburgerMenuControl.IsPaneOpen = false;
-                        break;
-                    case "Settings":
-                        HamburgerMenuControl.Content = new SettingsView();
-                        this.HamburgerMenuControl.IsPaneOpen = false;
-                        break;
-                    default:
-                        return;
+                    OpenLogInWindow();
+                    HamburgerMenuControl.SelectedIndex = -1;
+                    HamburgerMenuControl.Content = new DiagnoseView();
+                    this.HamburgerMenuControl.IsPaneOpen = false;
+                    return;
                 }
+                HamburgerMenuControl.Content = new SettingsView();
+                this.HamburgerMenuControl.IsPaneOpen = false;
             }
         }
 
@@ -131,6 +130,26 @@ namespace DiagnoseMe
             logInWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             logInWindow.ShowDialog();
+        }
+
+        public void SwitchTheme()
+        {
+            Properties.Settings.Default.IsDefaultTheme = !Properties.Settings.Default.IsDefaultTheme;
+
+            ApplyTheme(Properties.Settings.Default.IsDefaultTheme ? "DefaultTheme.xaml" : "SecondTheme.xaml");
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void ApplyTheme(string theme)
+        {
+            Application.Current.Resources.MergedDictionaries.Remove(Application.Current.Resources.MergedDictionaries.Last());
+
+            var dictionary = new ResourceDictionary
+            {
+                Source = new Uri($"Resources/{theme}", UriKind.Relative)
+            };
+            Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
     }
 }

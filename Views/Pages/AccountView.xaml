@@ -6,8 +6,10 @@
              xmlns:local="clr-namespace:DiagnoseMe.Views"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
-        <Grid.RowDefinitions>
+        <Grid Name="YourAccount_Grid">
+            <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="80"/>
@@ -82,12 +84,27 @@
                     Height="30"
                     Margin="0 0 15 0"
                     Content="Edytuj dane"/>
+            <Button Style="{StaticResource RegularButton}"
+                    Width="190"
+                    Height="30"
+                    Margin="0 0 15 0"
+                    Click="LogOut_Button_Click"
+                    Content="Wyloguj"/>
             <Button Style="{StaticResource DangerButton}"
                     Width="190"
                     Height="30"
                     Click="DeleteAccount_ButtonClick"
                     Content="Usuń konto"/>
         </WrapPanel>
+        </Grid>
+
+        <Grid Name="LoginFirst_Grid"
+              Visibility="Collapsed">
+            <TextBlock Text="Zaloguj się aby wyświetlić dane o koncie."
+                       HorizontalAlignment="Center"
+                       FontSize="24"
+                       Style="{StaticResource HeaderTextStyle}"/>
+        </Grid>
     </Grid>
 
 </UserControl>

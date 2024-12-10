@@ -17,7 +17,7 @@
 
         <TextBlock Text="Historia diagnoz"
                    Grid.Row="0"
-                   Style="{StaticResource HeaderTextStyle}"
+                   Style="{DynamicResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
 
         <Border Grid.Row="1"
@@ -42,20 +42,20 @@
                                        VerticalAlignment="Center"
                                        FontSize="16"
                                        ToolTip="{Binding DiseaseName}"
-                                       Style="{StaticResource PrimaryTextStyle}"/>
+                                       Style="{DynamicResource PrimaryTextStyle}"/>
 
                             <TextBlock Grid.Column="1"
                                        Text="{Binding DateOnly}"
                                        VerticalAlignment="Center"
                                        TextAlignment="Center"
                                        FontSize="16"
-                                       Style="{StaticResource PrimaryTextStyle}"/>
+                                       Style="{DynamicResource PrimaryTextStyle}"/>
 
                             <Button Grid.Column="2"
                                     Content="Szczegóły"
                                     Margin="5 0 0 0"
                                     Click="ShowDetails_ButtonClick"
-                                    Style="{StaticResource RegularButton}"/>
+                                    Style="{DynamicResource RegularButton}"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

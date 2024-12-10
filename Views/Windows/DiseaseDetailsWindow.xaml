@@ -10,7 +10,7 @@
         ShowInTaskbar="True"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Style="{StaticResource MetroWindowStyle}"
+        Style="{DynamicResource MetroWindowStyle}"
         Title="Szczegóły" Height="430" Width="480">
 
     <Grid>
@@ -23,11 +23,11 @@
 
                 <TextBlock Text="Diagnoza"
                            FontWeight="Medium"
-                           Style="{StaticResource PrimaryTextStyle}"/>
+                           Style="{DynamicResource PrimaryTextStyle}"/>
 
                 <TextBlock Name="DiseaseName_TextBlock"
                            TextWrapping="Wrap"
-                           Style="{StaticResource PrimaryTextStyle}"
+                           Style="{DynamicResource PrimaryTextStyle}"
                            Width="400"/>
 
             </StackPanel>
@@ -38,10 +38,10 @@
                 <TextBlock Text="Data zdiagnozowania"
                            Margin="0 0 0 5"
                            FontWeight="Medium"
-                           Style="{StaticResource PrimaryTextStyle}"/>
+                           Style="{DynamicResource PrimaryTextStyle}"/>
 
                 <TextBlock Name="Date_TextBlock"
-                           Style="{StaticResource PrimaryTextStyle}"
+                           Style="{DynamicResource PrimaryTextStyle}"
                            Width="400"/>
 
             </StackPanel>
@@ -51,11 +51,11 @@
 
                 <TextBlock Text="Opis"
                            FontWeight="Medium"
-                           Style="{StaticResource PrimaryTextStyle}"/>
+                           Style="{DynamicResource PrimaryTextStyle}"/>
 
                     <TextBlock Name="Description_TextBox"
                                TextWrapping="Wrap"
-                               Style="{StaticResource PrimaryTextStyle}"
+                               Style="{DynamicResource PrimaryTextStyle}"
                                Width="400"/>
                 
 
@@ -65,11 +65,11 @@
 
                 <TextBlock Text="Zalecenia"
                            FontWeight="Medium"
-                           Style="{StaticResource PrimaryTextStyle}"/>
+                           Style="{DynamicResource PrimaryTextStyle}"/>
 
                     <TextBlock Name="Recommendations_TextBlock"
                                TextWrapping="Wrap"
-                               Style="{StaticResource PrimaryTextStyle}"
+                               Style="{DynamicResource PrimaryTextStyle}"
                                Width="400"/>
                 
 
@@ -81,7 +81,7 @@
                 
                 <Button Content="Usuń"
                         Name="Close_Button"
-                        Style="{StaticResource DangerButton}"
+                        Style="{DynamicResource DangerButton}"
                         Width="100"
                         HorizontalAlignment="Left"
                         Height="25"
@@ -91,7 +91,7 @@
                 
                 <Button Content="Zamknij"
                         Name="Delete_Button"
-                        Style="{StaticResource RegularButton}"
+                        Style="{DynamicResource RegularButton}"
                         Width="100"
                         HorizontalAlignment="Right"
                         Height="25"

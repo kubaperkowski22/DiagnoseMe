@@ -16,7 +16,7 @@
 
         <TextBlock Text="Powiadomienia"
                    Grid.Row="0"
-                   Style="{StaticResource HeaderTextStyle}"
+                   Style="{DynamicResource HeaderTextStyle}"
                    HorizontalAlignment="Center"/>
 
 

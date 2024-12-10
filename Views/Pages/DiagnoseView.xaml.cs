@@ -78,8 +78,16 @@ namespace DiagnoseMe.Views
 
         private void SetView()
         {
-            if(_pageState == EPageState.AdditionalQuestions)
+            if (_pageState == EPageState.AdditionalQuestions)
+            {
                 ViewModel.UpdateQuestionList();
+                if (ViewModel.SymptomsButtonsStates.FirstOrDefault(x => x.Value == true) == null)
+                {
+                    MessageBox.Show("Musisz wybrać przynajmniej jeden objaw zanim przejdziesz dalej.", "Wybierz objawy!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    _pageState -= 1;
+                    return;
+                }
+            }
 
             switch (_pageState)
             {

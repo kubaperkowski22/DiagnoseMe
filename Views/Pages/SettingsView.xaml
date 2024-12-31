@@ -39,13 +39,7 @@
                             Content="Zmień motyw"/>
 
                 </Expander>
-                <Expander Header="Język"
-                          IsEnabled="False"
-                          Style="{DynamicResource Expander}">
-
-                    <TextBlock Text="nie dziala zmiana języków :(" FontSize="25" Foreground="{DynamicResource PrimaryColor}"/>
-
-                </Expander>
+               
             </StackPanel>
 
         </ScrollViewer>

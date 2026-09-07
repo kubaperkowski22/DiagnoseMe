@@ -54,7 +54,10 @@ namespace DiagnoseMe
 
         public static string GetConnectionString()
         {
-            return "REDACTED_CONNECTION_STRING";
+            return Environment.GetEnvironmentVariable(
+                    "DIAGNOSEME_CONNECTION_STRING")
+                    ?? throw new InvalidOperationException(
+                    "Missing required environment variable: DIAGNOSEME_CONNECTION_STRING");
         }
     }
 }

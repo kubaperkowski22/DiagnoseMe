@@ -11,7 +11,9 @@ namespace DiagnoseMe.Tools
 {
     public class ChatGptService
     {
-        private readonly string _apiKey = "REDACTED_OPENAI_KEY";
+        private readonly string _apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY")
+                                            ?? throw new InvalidOperationException(
+                                            "Missing required environment variable: OPENAI_API_KEY");
         private readonly HttpClient httpClient;
         private const string apiUrl = "https://api.openai.com/v1/chat/completions";
 
